@@ -1,0 +1,459 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* HttpClientViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* HttpClientViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		6824E03A1090C31400544642 /* PutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E0391090C31400544642 /* PutMethod.m */; };
+		6824E0431090C55100544642 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E0421090C55100544642 /* HttpResponse.m */; };
+		6824E0E11090CC0B00544642 /* PutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E0391090C31400544642 /* PutMethod.m */; };
+		6824E0E31090CC0B00544642 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E0421090C55100544642 /* HttpResponse.m */; };
+		6824E1101090CE1900544642 /* DeleteMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E10F1090CE1900544642 /* DeleteMethod.m */; };
+		6824E1111090CE1900544642 /* DeleteMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = 6824E10E1090CE1900544642 /* DeleteMethod.h */; };
+		6824E1121090CE1900544642 /* DeleteMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6824E10F1090CE1900544642 /* DeleteMethod.m */; };
+		682A4555109B50F900A6E863 /* DelegateMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 682A4554109B50F900A6E863 /* DelegateMessenger.m */; };
+		682A4556109B50F900A6E863 /* DelegateMessenger.h in Headers */ = {isa = PBXBuildFile; fileRef = 682A4553109B50F900A6E863 /* DelegateMessenger.h */; };
+		682A4557109B50F900A6E863 /* DelegateMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 682A4554109B50F900A6E863 /* DelegateMessenger.m */; };
+		6838746B1063DBBD00A89DC3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDD064B1062F0030072663A /* libz.dylib */; };
+		6838746C1063DBD900A89DC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		6838746E1063DC1800A89DC3 /* BasicMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5290105EA8340040F8E7 /* BasicMethod.m */; };
+		6838746F1063DC1800A89DC3 /* FilePart.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6395691060104000FCAA10 /* FilePart.m */; };
+		683874701063DC1800A89DC3 /* GetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5289105EA7D80040F8E7 /* GetMethod.m */; };
+		683874711063DC1800A89DC3 /* HttpClientGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD73B7E106159310024BC88 /* HttpClientGzipUtility.m */; };
+		683874721063DC1800A89DC3 /* MultipartMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD73B80106159310024BC88 /* MultipartMethod.m */; };
+		683874731063DC1800A89DC3 /* PostMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5223105E95E90040F8E7 /* PostMethod.m */; };
+		683874741063DC1800A89DC3 /* StringPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5216105E92A90040F8E7 /* StringPart.m */; };
+		68FB5217105E92A90040F8E7 /* StringPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5216105E92A90040F8E7 /* StringPart.m */; };
+		68FB5224105E95E90040F8E7 /* PostMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5223105E95E90040F8E7 /* PostMethod.m */; };
+		68FB528A105EA7D80040F8E7 /* GetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5289105EA7D80040F8E7 /* GetMethod.m */; };
+		68FB5291105EA8340040F8E7 /* BasicMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FB5290105EA8340040F8E7 /* BasicMethod.m */; };
+		DF63956A1060104000FCAA10 /* FilePart.m in Sources */ = {isa = PBXBuildFile; fileRef = DF6395691060104000FCAA10 /* FilePart.m */; };
+		DFD73B82106159310024BC88 /* HttpClientGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD73B7E106159310024BC88 /* HttpClientGzipUtility.m */; };
+		DFD73B83106159310024BC88 /* MultipartMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD73B80106159310024BC88 /* MultipartMethod.m */; };
+		DFDD064C1062F0030072663A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DFDD064B1062F0030072663A /* libz.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* HttpClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* HttpClientViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HttpClientViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* HttpClient_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient_Prefix.pch; sourceTree = "<group>"; };
+		68030ED410B44B59006AC431 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		680EBA7D109A060C00ACA4F7 /* HttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientDelegate.h; sourceTree = "<group>"; };
+		6824E0381090C31400544642 /* PutMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PutMethod.h; sourceTree = "<group>"; };
+		6824E0391090C31400544642 /* PutMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PutMethod.m; sourceTree = "<group>"; };
+		6824E0411090C55100544642 /* HttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponse.h; sourceTree = "<group>"; };
+		6824E0421090C55100544642 /* HttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponse.m; sourceTree = "<group>"; };
+		6824E10E1090CE1900544642 /* DeleteMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteMethod.h; sourceTree = "<group>"; };
+		6824E10F1090CE1900544642 /* DeleteMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteMethod.m; sourceTree = "<group>"; };
+		682A4553109B50F900A6E863 /* DelegateMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateMessenger.h; sourceTree = "<group>"; };
+		682A4554109B50F900A6E863 /* DelegateMessenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateMessenger.m; sourceTree = "<group>"; };
+		683874681063DBAD00A89DC3 /* libHttpClientLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHttpClientLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		68618F1A1073AFA0002EA8F3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		686618CA1091FF4B009C7EDC /* mainpage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainpage.h; sourceTree = "<group>"; };
+		68FB51F9105E915B0040F8E7 /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part.h; sourceTree = "<group>"; };
+		68FB5215105E92A90040F8E7 /* StringPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringPart.h; sourceTree = "<group>"; };
+		68FB5216105E92A90040F8E7 /* StringPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringPart.m; sourceTree = "<group>"; };
+		68FB521E105E95560040F8E7 /* HttpMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpMethod.h; sourceTree = "<group>"; };
+		68FB5222105E95E90040F8E7 /* PostMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMethod.h; sourceTree = "<group>"; };
+		68FB5223105E95E90040F8E7 /* PostMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMethod.m; sourceTree = "<group>"; };
+		68FB5288105EA7D80040F8E7 /* GetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMethod.h; sourceTree = "<group>"; };
+		68FB5289105EA7D80040F8E7 /* GetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMethod.m; sourceTree = "<group>"; };
+		68FB528F105EA8340040F8E7 /* BasicMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMethod.h; sourceTree = "<group>"; };
+		68FB5290105EA8340040F8E7 /* BasicMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMethod.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* HttpClient-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "HttpClient-Info.plist"; path = "../HttpClient-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		DF6395681060104000FCAA10 /* FilePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePart.h; sourceTree = "<group>"; };
+		DF6395691060104000FCAA10 /* FilePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePart.m; sourceTree = "<group>"; };
+		DFD73B7E106159310024BC88 /* HttpClientGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClientGzipUtility.m; sourceTree = "<group>"; };
+		DFD73B7F106159310024BC88 /* MultipartMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMethod.h; sourceTree = "<group>"; };
+		DFD73B80106159310024BC88 /* MultipartMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMethod.m; sourceTree = "<group>"; };
+		DFD73B81106159310024BC88 /* HttpClientGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientGzipUtility.h; sourceTree = "<group>"; };
+		DFDD064B1062F0030072663A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				DFDD064C1062F0030072663A /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		683874661063DBAD00A89DC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6838746B1063DBBD00A89DC3 /* libz.dylib in Frameworks */,
+				6838746C1063DBD900A89DC3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				686618CD1092038D009C7EDC /* Documentation */,
+				6824E02F1090C20700544642 /* Methods */,
+				6824E0331090C23800544642 /* Parts */,
+				6824E0321090C22500544642 /* Utilities */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* HttpClient.app */,
+				683874681063DBAD00A89DC3 /* libHttpClientLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* HttpResources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				DFDD064B1062F0030072663A /* libz.dylib */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* HttpClient_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* HttpResources */ = {
+			isa = PBXGroup;
+			children = (
+				2899E5210DE3E06400AC0155 /* HttpClientViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* HttpClient-Info.plist */,
+			);
+			path = HttpResources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6824E02F1090C20700544642 /* Methods */ = {
+			isa = PBXGroup;
+			children = (
+				68FB521E105E95560040F8E7 /* HttpMethod.h */,
+				68FB528F105EA8340040F8E7 /* BasicMethod.h */,
+				68FB5290105EA8340040F8E7 /* BasicMethod.m */,
+				68FB5288105EA7D80040F8E7 /* GetMethod.h */,
+				68FB5289105EA7D80040F8E7 /* GetMethod.m */,
+				DFD73B7F106159310024BC88 /* MultipartMethod.h */,
+				DFD73B80106159310024BC88 /* MultipartMethod.m */,
+				68FB5222105E95E90040F8E7 /* PostMethod.h */,
+				68FB5223105E95E90040F8E7 /* PostMethod.m */,
+				6824E0381090C31400544642 /* PutMethod.h */,
+				6824E0391090C31400544642 /* PutMethod.m */,
+				6824E10E1090CE1900544642 /* DeleteMethod.h */,
+				6824E10F1090CE1900544642 /* DeleteMethod.m */,
+			);
+			path = Methods;
+			sourceTree = "<group>";
+		};
+		6824E0321090C22500544642 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				68618F1A1073AFA0002EA8F3 /* Constants.h */,
+				DFD73B81106159310024BC88 /* HttpClientGzipUtility.h */,
+				DFD73B7E106159310024BC88 /* HttpClientGzipUtility.m */,
+				6824E0411090C55100544642 /* HttpResponse.h */,
+				6824E0421090C55100544642 /* HttpResponse.m */,
+				680EBA7D109A060C00ACA4F7 /* HttpClientDelegate.h */,
+				682A4553109B50F900A6E863 /* DelegateMessenger.h */,
+				682A4554109B50F900A6E863 /* DelegateMessenger.m */,
+				68030ED410B44B59006AC431 /* HttpClient.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6824E0331090C23800544642 /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				DF6395681060104000FCAA10 /* FilePart.h */,
+				DF6395691060104000FCAA10 /* FilePart.m */,
+				68FB51F9105E915B0040F8E7 /* Part.h */,
+				68FB5215105E92A90040F8E7 /* StringPart.h */,
+				68FB5216105E92A90040F8E7 /* StringPart.m */,
+			);
+			path = Parts;
+			sourceTree = "<group>";
+		};
+		686618CD1092038D009C7EDC /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				686618CA1091FF4B009C7EDC /* mainpage.h */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		683874641063DBAD00A89DC3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6824E1111090CE1900544642 /* DeleteMethod.h in Headers */,
+				682A4556109B50F900A6E863 /* DelegateMessenger.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* HttpClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "HttpClient" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HttpClient;
+			productName = HttpClient;
+			productReference = 1D6058910D05DD3D006BFB54 /* HttpClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+		683874671063DBAD00A89DC3 /* HttpClientLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6838746D1063DBF800A89DC3 /* Build configuration list for PBXNativeTarget "HttpClientLib" */;
+			buildPhases = (
+				683874641063DBAD00A89DC3 /* Headers */,
+				683874651063DBAD00A89DC3 /* Sources */,
+				683874661063DBAD00A89DC3 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HttpClientLib;
+			productName = HttpClientLib;
+			productReference = 683874681063DBAD00A89DC3 /* libHttpClientLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HttpClient" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* HttpClient */,
+				683874671063DBAD00A89DC3 /* HttpClientLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* HttpClientViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6824E03A1090C31400544642 /* PutMethod.m in Sources */,
+				6824E0431090C55100544642 /* HttpResponse.m in Sources */,
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				68FB5217105E92A90040F8E7 /* StringPart.m in Sources */,
+				68FB5224105E95E90040F8E7 /* PostMethod.m in Sources */,
+				68FB528A105EA7D80040F8E7 /* GetMethod.m in Sources */,
+				68FB5291105EA8340040F8E7 /* BasicMethod.m in Sources */,
+				DF63956A1060104000FCAA10 /* FilePart.m in Sources */,
+				DFD73B82106159310024BC88 /* HttpClientGzipUtility.m in Sources */,
+				DFD73B83106159310024BC88 /* MultipartMethod.m in Sources */,
+				6824E1101090CE1900544642 /* DeleteMethod.m in Sources */,
+				682A4555109B50F900A6E863 /* DelegateMessenger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		683874651063DBAD00A89DC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6824E0E11090CC0B00544642 /* PutMethod.m in Sources */,
+				6824E0E31090CC0B00544642 /* HttpResponse.m in Sources */,
+				6838746E1063DC1800A89DC3 /* BasicMethod.m in Sources */,
+				6838746F1063DC1800A89DC3 /* FilePart.m in Sources */,
+				683874701063DC1800A89DC3 /* GetMethod.m in Sources */,
+				683874711063DC1800A89DC3 /* HttpClientGzipUtility.m in Sources */,
+				683874721063DC1800A89DC3 /* MultipartMethod.m in Sources */,
+				683874731063DC1800A89DC3 /* PostMethod.m in Sources */,
+				683874741063DC1800A89DC3 /* StringPart.m in Sources */,
+				6824E1121090CE1900544642 /* DeleteMethod.m in Sources */,
+				682A4557109B50F900A6E863 /* DelegateMessenger.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HttpClient_Prefix.pch;
+				INFOPLIST_FILE = "HttpClient-Info.plist";
+				PRODUCT_NAME = HttpClient;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HttpClient_Prefix.pch;
+				INFOPLIST_FILE = "HttpClient-Info.plist";
+				PRODUCT_NAME = HttpClient;
+			};
+			name = Release;
+		};
+		683874691063DBAE00A89DC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				PRODUCT_NAME = HttpClientLib;
+			};
+			name = Debug;
+		};
+		6838746A1063DBAE00A89DC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PREBINDING = NO;
+				PRODUCT_NAME = HttpClientLib;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "HttpClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6838746D1063DBF800A89DC3 /* Build configuration list for PBXNativeTarget "HttpClientLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				683874691063DBAE00A89DC3 /* Debug */,
+				6838746A1063DBAE00A89DC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "HttpClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

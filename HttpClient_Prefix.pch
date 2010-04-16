@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'HttpClient' target in the 'HttpClient' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+    #import <UIKit/UIKit.h>
+#endif
