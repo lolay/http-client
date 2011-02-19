@@ -35,20 +35,37 @@
  */
 @interface BasicMethod : NSObject {
 	NSMutableDictionary * params;
+	NSMutableDictionary * headers;
+	int timeoutInSeconds;
+	NSData* body;
 }
+
+/**
+ * This method sets the timeout value
+ * @param timeoutValue The timeout, in seconds
+ */
+- (void)setTimeout:(int)timeoutValue;
 
 /**
  * This method adds a parameter to be used in a GET or POST operation.  The order of the parameters is not guaranteed
  * @param paramName The name of the parameter
  * @param paramData The value to correspond to that parameter
  */
--(void)addParameter:(NSString*)paramData withName:(NSString*)paramName;
+- (void)addParameter:(NSString*)paramData withName:(NSString*)paramName;
 
 /**
  * This method adds all of the key/value pairs in a NSDictionary as parameters.  The order of the parameters is not guaranteed
  * @param dict The dictiontary to use for adding parameters
  */
--(void)addParametersFromDictionary:(NSDictionary*)dict;
+- (void)addParametersFromDictionary:(NSDictionary*)dict;
+
+
+/**
+ * This method adds a header to be used in any operation.  The order of the headers is not guaranteed
+ * @param headerName The name of the header
+ * @param headerData The value to correspond to that header
+ */
+- (void)addHeader:(NSString*)headerData withName:(NSString*)headerName;
 
 /**
  * This method executes the HttpMethod synchronously, blocking the calling thread
@@ -58,7 +75,7 @@
  * @param contentType The value to use for the Content-Type field in the header
  * @return A string containing whatever the was sent back after performing the GET or POST
  */
--(HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType;
+- (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType;
 
 /**
  * This method executes the HttpMethod asynchronously
@@ -68,6 +85,6 @@
  * @param contentType The value to use for the Content-Type field in the header
  * @param delegate The object to receive HttpClientDelegate methods
  */
--(void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate>)delegate;
+- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate>)delegate;
 
 @end

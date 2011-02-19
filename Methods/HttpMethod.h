@@ -38,14 +38,14 @@
  * @param methodURL The URL to use for executing the method
  * @return A NSString* containing the results of the method execution
  */
--(HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL;
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL;
 
 /**
  * Execute the method at the supplied URL.  The current thread continues executing, and results are sent through the delegate methods
  * @param methodURL The URL to use for executing the method
  * @param delegate The object to receive delegate methods for the connection
  */
--(void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate;
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate;
 
 @end
 

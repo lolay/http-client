@@ -29,12 +29,12 @@
 
 @implementation GetMethod
 
--(HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
 	//Call the executeMethod function from the super class, giving the appropriate parameters
 	return [super executeMethodSynchronously:methodURL methodType:@"GET" dataInBody:NO contentType:@"application/x-www-form-urlencoded"];
 }
 
--(void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
 	[super executeMethodAsynchronously:methodURL methodType:@"GET" dataInBody:NO contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
 }
 

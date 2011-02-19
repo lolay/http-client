@@ -41,20 +41,20 @@
  * The URLResponse data from the final server redirect will be placed in the HttpResponse sent to the connectionFinishedLoading message
  * @param response The HTTP response sent back by the server
  */
--(void)connectionReceivedResponse:(NSHTTPURLResponse*)response;
+- (void)connectionReceivedResponse:(NSHTTPURLResponse*)response;
 
 /**
  * This message is sent when the connection fails
  * @param error The error message associated with the failure
  */
--(void)connectionFailedWithError:(NSError*)error;
+- (void)connectionFailedWithError:(NSError*)error;
 
 /**
  * This message is sent when the connection finishes loading<br>
  * The HttpResponse object holds the server response code and header fields from the last redirect the occurred
  * @param result A HttpResponse object which holds the data sent back and the header information from the last server redirect
  */
--(void)connectionFinishedLoading:(HttpResponse*)result;
+- (void)connectionFinishedLoading:(HttpResponse*)result;
 
 @end
 

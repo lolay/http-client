@@ -35,7 +35,7 @@
 	NSHTTPURLResponse * lastResponse;
 }
 
--(id)initWithDelegate:(id<HttpClientDelegate,NSObject>)del;
+- (id)initWithDelegate:(id<HttpClientDelegate,NSObject>)del;
 +(id)delegateMessengerWithDelegate:(id<HttpClientDelegate,NSObject>)del;
 
 @end

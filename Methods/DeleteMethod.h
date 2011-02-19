@@ -26,13 +26,13 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpMethod.h"
-
+#import "BasicMethod.h"
 /**
  * The DeleteMethod implements the HTTP DELETE method, which deletes the speicifed resource
  * @author Scott Slaugh
  * @version 0.5
  */
-@interface DeleteMethod : NSObject <HttpMethod> {
+@interface DeleteMethod : BasicMethod <HttpMethod> {
 
 }
 

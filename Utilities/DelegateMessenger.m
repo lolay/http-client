@@ -29,7 +29,7 @@
 
 @implementation DelegateMessenger
 
--(id)initWithDelegate:(id<HttpClientDelegate,NSObject>)del {
+- (id)initWithDelegate:(id<HttpClientDelegate,NSObject>)del {
 	self = [super init];
 	
 	if (self != nil) {
@@ -74,14 +74,15 @@
 	HttpResponse * response = [[HttpResponse alloc] initWithHttpURLResponse:lastResponse withData:receivedData];
 	
 	if ([delegate respondsToSelector:@selector(connectionFinishedLoading:)]) {
-		[delegate connectionFinishedLoading:[response autorelease]];
+		[delegate connectionFinishedLoading:response];
 	}
-		
+	
+	[response release];
 	[receivedData release];
 	receivedData = nil;
 }
 
--(void)dealloc {
+- (void)dealloc {
 	if (receivedData != nil) {
 		[receivedData release];
 	}

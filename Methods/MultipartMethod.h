@@ -36,18 +36,34 @@
  */
 @interface MultipartMethod : NSObject <HttpMethod> {
 	NSMutableArray * methodParts;
+	NSMutableDictionary * headers;
+	int timeoutInSeconds;
 }
+
+/**
+ * This method sets the timeout value
+ * @param timeoutValue The timeout, in seconds
+ */
+- (void)setTimeout:(int)timeoutValue;
 
 /**
  * Add a part to the multipart request.  Order of the parts is not guaranteed.
  * @param newPart A part to be added to the multipart request
  */
--(void)addPart:(id<Part>)newPart;
+- (void)addPart:(id<Part>)newPart;
 
 /**
  * Add string parts to the request using the key/value pairs in the dictionary.  Order of the parts is not guaranteed.
  * @param dict The dictionary to get the key/value pairs from.
  */
--(void)addStringPartsFromDictionary:(NSDictionary*)dict;
+- (void)addStringPartsFromDictionary:(NSDictionary*)dict;
+
+/**
+ * This method adds a header to be used in any operation.  The order of the headers is not guaranteed
+ * @param headerName The name of the header
+ * @param headerData The value to correspond to that header
+ */
+- (void)addHeader:(NSString*)headerData withName:(NSString*)headerName;
+
 
 @end

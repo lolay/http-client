@@ -37,6 +37,7 @@
 	NSString * responseString;
 	NSDictionary * headerFields;
 	NSInteger statusCode;
+	NSURL* url;
 }
 
 /**
@@ -49,31 +50,33 @@
  * @param response The HTTP respone to use to populate this response
  * @param data The data returned by the HTTP method
  */
--(id)initWithHttpURLResponse:(NSHTTPURLResponse*)response withData:(NSData*)data;
+- (id)initWithHttpURLResponse:(NSHTTPURLResponse*)response withData:(NSData*)data;
 
 /**
  * Get the data that was returned after exectuing the method
  * @return The data that was returned after executing the HTTP method
  */
--(NSData*) responseData;
+- (NSData*) responseData;
 
 /**
  * Get the data that was returned after exectuing the method, formatted as a string
  * @return A string representing the data returned by the HTTP method
  */
--(NSString*) responseString;
+- (NSString*) responseString;
 
 /**
  * Get one of the HTTP headers from the response sent after executing a HTTP method
  * @param The name of the HTTP header field you want
  * @return The requested key, or nil if the requested key couldn't be found
  */
--(NSString*) HTTPHeaderForKey:(NSString*)key;
+- (NSString*) HTTPHeaderForKey:(NSString*)key;
+
+- (NSHTTPCookie*) cookieForName:(NSString*) name;
 
 /**
  * Get the response code sent back after executing the HTTP method
  * @return The response code
  */
--(NSInteger) statusCode;
+- (NSInteger) statusCode;
 
 @end

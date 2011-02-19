@@ -54,6 +54,6 @@
  * @param compressFile Whether the file should be compressed.  If true, the file is compressed as a gzip file
  * @return A pointer to the new object
  */
--(id) initWithFile:(NSURL*)fileURL withName: (NSString*)paramName compressFile:(bool)compress;
+- (id) initWithFile:(NSURL*)fileURL withName: (NSString*)paramName compressFile:(bool)compress;
 
 @end

@@ -33,13 +33,28 @@
  * Execute the POST method
  * - methodURL: The URL to use for executing the POST method
  */
--(HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
-	//Call the executeMethod function from the super class, giving the appropriate parameters
-	return [super executeMethodSynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:@"application/x-www-form-urlencoded"];
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [super executeMethodSynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded"];
 }
 
--(void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
-	[super executeMethodAsynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+	[super executeMethodAsynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType :@"application/x-www-form-urlencoded" withDelegate:delegate];
+}
+
+- (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType {
+	body = [inBody retain];
+	contentType = [inContentType retain];
+}
+
+- (void) setStringBody:(NSString*) inBody contentType:(NSString*) inContentType {
+	body = [[inBody dataUsingEncoding:NSUTF8StringEncoding] retain];
+	contentType = [inContentType retain];
+}
+
+- (void) dealloc {
+	[contentType release];
+	
+	[super dealloc];
 }
 
 @end

@@ -27,12 +27,11 @@
 #import "HttpResponse.h"
 #import "Constants.h"
 
-
 @implementation HttpResponse
 
 @synthesize headerFields;
 
--(id)initWithHttpURLResponse:(NSHTTPURLResponse*)response withData:(NSData*)data {
+- (id)initWithHttpURLResponse:(NSHTTPURLResponse*)response withData:(NSData*)data {
 	self = [super init];
 	
 	if (self != nil) {
@@ -40,16 +39,17 @@
 		responseString = nil;
 		headerFields = [[response allHeaderFields] retain];
 		statusCode = [response statusCode];
+		url = [response.URL retain];
 	}
 	
 	return self;
 }
 
--(NSData*) responseData {
+- (NSData*) responseData {
 	return responseData;
 }
 
--(NSString*) responseString {
+- (NSString*) responseString {
 	if (responseString == nil) {
 		responseString = [[NSString alloc] initWithData:responseData encoding:encoding];
 	}
@@ -57,19 +57,30 @@
 	return responseString;
 }
 
--(NSString*) HTTPHeaderForKey:(NSString*)key {
+- (NSString*) HTTPHeaderForKey:(NSString*)key {
 	return [headerFields objectForKey:key];
 }
 
--(NSInteger) statusCode {
+- (NSHTTPCookie*) cookieForName:(NSString*) name {
+	for (NSHTTPCookie* cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
+		if ([cookie.name isEqualToString:name]) {
+			return [[cookie retain] autorelease];
+		}
+	}
+	
+	return nil;
+}
+
+- (NSInteger) statusCode {
 	return statusCode;
 }
 
--(void)dealloc {
+- (void)dealloc {
 	[responseData release];
 	if (responseString != nil)
 		[responseString release];
 	[headerFields release];
+	[url release];
 	
 	[super dealloc];
 }

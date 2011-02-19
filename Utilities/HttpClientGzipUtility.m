@@ -151,7 +151,7 @@
 		
 	} while ( deflateStatus == Z_OK );		
 	
-	NSLog(@"Buffer was size %d, saved %d", [compressedData length], zlibStreamStruct.total_out);
+	NSLog(@"Buffer was size %u saved %u", [compressedData length], (NSUInteger) zlibStreamStruct.total_out);
 	
 	// Check for zlib error and convert code to usable error message if appropriate
 	if (deflateStatus != Z_STREAM_END)

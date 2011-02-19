@@ -35,3 +35,5 @@
 #import "StringPart.h"
 #import "FilePart.h"
 #import "HttpResponse.h"
+#import "DataPart.h"
+#import "FileDataPart.h"

@@ -31,99 +31,179 @@
 
 @implementation BasicMethod
 
--(id)init {
+- (id)init {
 	self = [super init];
 	
 	if (self != nil) {
 		//Initialize the dictionary used for storing parameters
 		params = [[NSMutableDictionary alloc] init];
+		headers = [[NSMutableDictionary alloc] init];
+		timeoutInSeconds = 20; // DEFAULT
 	}
 	
 	return self;
 }
 
--(void)addParameter:(NSString*)paramData withName:(NSString*)paramName {
-	//Add the parameter to the parameters dictionary
-	[params setValue:paramData forKey:paramName];
+- (void)setTimeout:(int)timeoutValue {
+	timeoutInSeconds = timeoutValue;
 }
 
--(void)addParametersFromDictionary:(NSDictionary*)dict {
+- (void)addParameter:(NSString*)paramData withName:(NSString*)paramName {
+	//Add the parameter to the parameters dictionary
+	id existingValue = [params valueForKey:paramName];
+	if (existingValue != nil) {
+		if ([existingValue isKindOfClass:[NSMutableArray class]]) {
+			[(NSMutableArray*)existingValue addObject:paramData];
+		} else {
+			NSMutableArray* newValue = [[NSMutableArray alloc] init];
+			[newValue addObject:existingValue];
+			[newValue addObject:paramData];
+			[params setValue:newValue forKey:paramName];
+			[newValue release];
+		}
+	} else {
+		[params setValue:paramData forKey:paramName];
+	}
+}
+
+- (void)addParametersFromDictionary:(NSDictionary*)dict {
 	for (id key in dict) {
 		[params setValue:[dict objectForKey:key] forKey:key];
 	}
 }
 
--(void)prepareMethod:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withRequest:(NSMutableURLRequest*)request {
+- (void)addHeader:(NSString*)headerData withName:(NSString*)headerName {
+	//Add the header to the headers dictionary
+	[headers setValue:headerData forKey:headerName];
+}
+
+- (NSString*) encodeUrl:(NSString*) string {
+	if (string == nil) {
+		return nil;
+	}
+	
+	NSString *newString = [(NSString*) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef) string, CFSTR(" "), CFSTR(":/?#[]@!$&'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(encoding)) autorelease];
+	newString = [newString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+	if (newString) {
+		return newString;
+	}
+	return @"";
+}
+
+- (void)prepareMethod:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withRequest:(NSMutableURLRequest*)request {
 	//Set the destination URL
 	[request setURL:methodURL];
 	//Set the method type
 	[request setHTTPMethod:methodType];
 	//Set the content-type
 	[request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+	//Set the timeout
+	[request setTimeoutInterval:timeoutInSeconds];
+	//Gzip header
+	[request addValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
 	
 	//Create a data object to hold the body while we're creating it
-	NSMutableData * body = [[NSMutableData alloc] init];
-	
-	//Loop over all the items in the parameters dictionary and add them to the body
-	int cCount = 0;
-	for (NSString* cKey in params) {
-		cCount++;
-		//If we've already added at least one data item, we need to add the & character between each new data item
-		if (cCount > 1) {
-			[body appendData:[@"&" dataUsingEncoding:encoding]];
-		}
+	if (dataInBody && ! body) {
+		NSMutableData * bodyData = [[NSMutableData alloc] init];
 		
-		//Add the parameter
-		[body appendData:[[NSString stringWithFormat:@"%@=%@", cKey, [params valueForKey:cKey]] dataUsingEncoding:encoding]];
+		//Loop over all the items in the parameters dictionary and add them to the body
+		int cCount = 0;
+		for (NSString* cKey in params) {
+			cCount++;
+			//If we've already added at least one data item, we need to add the & character between each new data item
+			if (cCount > 1) {
+				[bodyData appendData:[@"&" dataUsingEncoding:encoding]];
+			}
+			
+			//Add the parameter
+			if ([[params valueForKey:cKey] isKindOfClass:[NSMutableArray class]]) {
+				int pCount = 0;
+				for (NSString* arrayValue in (NSMutableArray*)[params valueForKey:cKey]) {
+					pCount++;
+					if (pCount > 1) {
+						[bodyData appendData:[@"&" dataUsingEncoding:encoding]];
+					}
+					[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:arrayValue]] dataUsingEncoding:encoding]];
+				}
+			} else {
+				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
+			}
+		}
+		body = [bodyData retain];
+		[bodyData release];
+	}
+		
+	//Loop over the items in the headers dictionary and add them to the request
+	for (NSString* cHeaderKey in headers) {
+		[request addValue:[headers valueForKey:cHeaderKey] forHTTPHeaderField:cHeaderKey];
 	}
 	
 	//Add the body data in either the actual HTTP body or as part of the URL query
-	if (dataInBody) { //For post methods, we add the parameters to the body
-		[request setHTTPBody:body];
-	} //For get methods, we have to add parameters to the url
-	else {
-		//Get a mutable string so that we can add the parameters to the end as query arguments
-		NSMutableString * newURLString = [[NSMutableString alloc] initWithString:[methodURL absoluteString]];
-		//Convert the body data into a string
-		NSString * bodyString = [[NSString alloc] initWithData:body encoding:encoding];
-		//Append the body data as a URL query
-		[newURLString appendFormat:@"?%@", bodyString];
-		//Create a new URL, escaping characters as necessary
-		NSURL * newURL = [NSURL URLWithString:[newURLString stringByAddingPercentEscapesUsingEncoding:encoding]];
-		[bodyString release];
-		[newURLString release];
-		//Set the url request's url to be this new URL with the query appended
-		[request setURL:newURL];
-	}
-	
-	[body release];
+	if (dataInBody || [body length] > 0) { 
+		if ([methodType isEqualToString:@"POST"]|| [methodType isEqualToString:@"PUT"]) {  //For post/put methods, we add the parameters to the body
+			[request setHTTPBody:body];
+		} else if ([methodType isEqualToString:@"GET"]) { //For get methods, we have to add parameters to the url
+			//Get a mutable string so that we can add the parameters to the end as query arguments
+			NSMutableString * newURLString = [[NSMutableString alloc] initWithString:[methodURL absoluteString]];
+			//Convert the body data into a string
+			NSString * bodyString = [[NSString alloc] initWithData:body encoding:encoding];
+			//Append the body data as a URL query
+			[newURLString appendFormat:@"?%@", bodyString];
+			//Create a new URL, escaping characters as necessary
+			NSURL * newURL = [NSURL URLWithString:[self encodeUrl:newURLString]];
+			[bodyString release];
+			[newURLString release];
+			//Set the url request's url to be this new URL with the query appended
+			[request setURL:newURL];			
+		}
+	} 
 }
 
--(HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType {
+- (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType {
 	
 	//Create a new URL request object
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
+	NSLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
 	NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
 	
 	HttpResponse * responseObject = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
+	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
+	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
+	
+	[request release];
+	
 	return [responseObject autorelease];
 }
 
--(void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
-	
+
+	NSLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+
 	//Execute the HTTP method
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
 	
 	[NSURLConnection connectionWithRequest:request delegate:messenger];
+	[request release];
+}
+
+- (void)dealloc {
+	NSLog(@"[BasicMethod dealloc] enter");
+
+	[params release];
+	[headers release];
+	[body release];
+	
+	[super dealloc];
 }
 
 @end

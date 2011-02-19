@@ -32,18 +32,24 @@
 
 @implementation MultipartMethod
 
--(id) init {
+- (id) init {
 	self = [super init];
 	
 	if (self != nil) {
 		methodParts = [[NSMutableArray alloc] init];
+		headers = [[NSMutableDictionary alloc] init];
+		timeoutInSeconds = 20; // DEFAULT
 	}
 	
 	return self;
 }
 
+- (void)setTimeout:(int)timeoutValue {
+	timeoutInSeconds = timeoutValue;
+}
+
 //*****A private method to generate a random boundary string for multipart data*****
--(NSString*)generateBoundary {
+- (NSString*)generateBoundary {
 	//The characters to use when generating the boundary
 	NSString * boundChars = @"-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
@@ -63,25 +69,37 @@
 	return [boundaryString autorelease];
 }
 
--(void)addPart:(id<Part>)newPart {
+- (void)addPart:(id<Part>)newPart {
 	[methodParts addObject:newPart];
 }
 
--(void)addStringPartsFromDictionary:(NSDictionary*)dict {
+- (void)addStringPartsFromDictionary:(NSDictionary*)dict {
 	for (id key in dict) {
 		StringPart *cPart = [StringPart stringPartWithParameter:[dict objectForKey:key] withName:key];
 		[methodParts addObject:cPart];
 	}
 }
 
--(void)prepareRequestWithURL:(NSURL*)methodURL withRequest:(NSMutableURLRequest*)urlRequest {
+- (void)addHeader:(NSString*)headerData withName:(NSString*)headerName {
+	//Add the header to the headers dictionary
+	[headers setValue:headerData forKey:headerName];
+}
+
+- (void)prepareRequestWithURL:(NSURL*)methodURL withRequest:(NSMutableURLRequest*)urlRequest {
 	NSString * boundary = [self generateBoundary];
-	NSString * contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+	NSString * contentType = [NSString stringWithFormat:@"multipart/mixed; type=*/*; boundary=%@", boundary];
 	
 	//Set up the request
 	[urlRequest setURL:methodURL];
 	[urlRequest setHTTPMethod:@"POST"];
 	[urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
+	//Set the timeout
+	[urlRequest setTimeoutInterval:timeoutInSeconds];
+	
+	//Loop over the items in the headers dictionary and add them to the request
+	for (NSString* cHeaderKey in headers) {
+		[urlRequest addValue:[headers valueForKey:cHeaderKey] forHTTPHeaderField:cHeaderKey];
+	}
 	
 	//Set up the body
 	NSMutableData * requestBody = [[NSMutableData alloc] init];
@@ -99,7 +117,7 @@
 	[requestBody release];
 }
 
--(HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
@@ -114,18 +132,18 @@
 	return [returnResponse autorelease];
 }
 
--(void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
 	
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
-	
+		
 	[NSURLConnection connectionWithRequest:urlRequest delegate:messenger];
 }
 
--(void) dealloc {
+- (void) dealloc {
 	[methodParts release];
 	
 	[super dealloc];

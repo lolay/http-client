@@ -30,7 +30,7 @@
 
 @implementation StringPart
 
--(id) initWithParameter:(NSString*)valueData withName:(NSString*)valueName {
+- (id) initWithParameter:(NSString*)valueData withName:(NSString*)valueName {
 	self = [super init];
 	
 	if (self != nil) {
@@ -45,15 +45,15 @@
 	return [[[StringPart alloc] initWithParameter:valueData withName:valueName] autorelease];
 }
 
--(void)appendData:(NSMutableData*)outputData {
-	
-	 [outputData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", name] dataUsingEncoding:encoding]];
-	 [outputData appendData:[[NSString stringWithString:@"Content-Type: text/plain; charset=UTF-8\r\n"] dataUsingEncoding:encoding]];
-	 [outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: 8bit\r\n"] dataUsingEncoding:encoding]];
-	 [outputData appendData:[[NSString stringWithFormat:@"\r\n%@\r\n",value] dataUsingEncoding:encoding]];
+- (void)appendData:(NSMutableData*)outputData {	
+	[outputData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", name] dataUsingEncoding:encoding]];
+	[outputData appendData:[[NSString stringWithString:@"Content-Type: text/plain; charset=UTF-8\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[[NSString stringWithFormat:@"Content-ID: <%@>\r\n",name] dataUsingEncoding:encoding]];
+	[outputData appendData:[[NSString stringWithFormat:@"\r\n%@\r\n",value] dataUsingEncoding:encoding]];
 }
 
--(void)dealloc {
+- (void)dealloc {
 	
 	if (name != nil)
 		[name release];

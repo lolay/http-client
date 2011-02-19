@@ -37,7 +37,7 @@
  * Append data to the HTTP body.  The calling method needs to place the appropriate boundary data around the output
  * @param outputData The object to which this part's data should be appended
  */
--(void)appendData:(NSMutableData*)outputData;
+- (void)appendData:(NSMutableData*)outputData;
 
 @end
 

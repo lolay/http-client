@@ -30,37 +30,12 @@
 
 @implementation DeleteMethod
 
--(void)prepareURLRequestWithURL:(NSURL*)methodURL withRequest:(NSMutableURLRequest*)request {
-	//Set the destination URL
-	[request setURL:methodURL];
-	//Set the method type
-	[request setHTTPMethod:@"DELETE"];
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [super executeMethodSynchronously:methodURL methodType:@"DELETE" dataInBody:NO contentType:@"application/x-www-form-urlencoded"];
 }
 
--(HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
-	//Create a new URL request object
-	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
-	
-	[self prepareURLRequestWithURL:methodURL withRequest:request];
-	
-	//Execute the HTTP method, saving the return data
-	NSHTTPURLResponse * response;
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-	
-	HttpResponse * returnResponse = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
-	
-	return [returnResponse autorelease];
-}
-
--(void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
-	//Create a new URL request object
-	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
-	
-	[self prepareURLRequestWithURL:methodURL withRequest:request];
-	
-	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
-	
-	[NSURLConnection connectionWithRequest:request delegate:messenger];
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+	[super executeMethodAsynchronously:methodURL methodType:@"DELETE" dataInBody:NO contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
 }
 
 @end

@@ -26,26 +26,15 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpMethod.h"
+#import "BasicMethod.h"
 
 /**
  * The PutMethod implements a HTTP PUT method, which uploads data to a server
  * @author Scott Slaugh
  * @version 0.5
  */
-@interface PutMethod : NSObject <HttpMethod> {
-	NSData * uploadData;
+@interface PutMethod : BasicMethod <HttpMethod>{
+
 }
-
-/**
- * Create a PUT request which will upload the speicifed data
- * @param data The data to upload
- */
--(id)initWithData:(NSData*)data;
-
-/**
- * Create a PUT request which will upload the file pointed to by url
- * @param url The file to upload
- */
--(id)initWithContentsOfURL:(NSURL*)url;
 
 @end

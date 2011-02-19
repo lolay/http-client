@@ -30,7 +30,7 @@
 
 @implementation FilePart
 
--(id) initWithFile:(NSURL*)fileURL withName: (NSString*)paramName compressFile:(bool)compress {
+- (id) initWithFile:(NSURL*)fileURL withName: (NSString*)paramName compressFile:(bool)compress {
 	self = [super init];
 	
 	if (self != nil) {
@@ -47,7 +47,7 @@
 	return [[[FilePart alloc] initWithFile:fileURL withName:paramName compressFile:compress] autorelease];
 }
 
--(void)appendData:(NSMutableData*)outputData {
+- (void)appendData:(NSMutableData*)outputData {
 	
 	NSString * fileName = [[[file absoluteString] componentsSeparatedByString:@"/"] lastObject];
 	
@@ -56,7 +56,7 @@
 	
 	if (compressFile) {
 		NSData * tempFileData = [NSData dataWithContentsOfURL:file];
-		fileData = [[HttpClientGzipUtility gzipData:tempFileData] retain];
+		fileData = [[[HttpClientGzipUtility gzipData:tempFileData] retain] autorelease];
 		
 		if (fileData == nil) {
 			NSLog(@"Compressed data is nil!");
@@ -76,7 +76,7 @@
 	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
 }
 
--(void) dealloc {
+- (void) dealloc {
 	if (name != nil)
 		[name release];
 	

@@ -51,6 +51,6 @@
  * @param valueName The name to use for this string part
  * @return A pointer to the new object
  */
--(id) initWithParameter:(NSString*)valueData withName:(NSString*)valueName;
+- (id) initWithParameter:(NSString*)valueData withName:(NSString*)valueName;
 
 @end
