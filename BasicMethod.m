@@ -103,7 +103,7 @@
 	[request addValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
 	
 	//Create a data object to hold the body while we're creating it
-	if (dataInBody && ! body) {
+	if (! body) {
 		NSMutableData * bodyData = [[NSMutableData alloc] init];
 		
 		//Loop over all the items in the parameters dictionary and add them to the body
@@ -150,7 +150,7 @@
 			//Append the body data as a URL query
 			[newURLString appendFormat:@"?%@", bodyString];
 			//Create a new URL, escaping characters as necessary
-			NSURL * newURL = [NSURL URLWithString:[self encodeUrl:newURLString]];
+			NSURL * newURL = [NSURL URLWithString:newURLString];
 			[bodyString release];
 			[newURLString release];
 			//Set the url request's url to be this new URL with the query appended
