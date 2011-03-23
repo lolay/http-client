@@ -29,7 +29,7 @@
 
 @implementation HttpResponse
 
-@synthesize headerFields;
+@synthesize headerFields = headerFields_;
 
 - (id)initWithHttpURLResponse:(NSHTTPURLResponse*)response withData:(NSData*)data {
 	self = [super init];
