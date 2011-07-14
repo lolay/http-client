@@ -134,7 +134,7 @@
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
 	
-	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
+	NSMutableURLRequest * urlRequest = [[[NSMutableURLRequest alloc] init] autorelease];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
