@@ -145,6 +145,7 @@
 
 - (void) dealloc {
 	[methodParts release];
+    [headers release];
 	
 	[super dealloc];
 }
