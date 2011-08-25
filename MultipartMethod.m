@@ -168,6 +168,7 @@
 
 - (void) dealloc {
 	[methodParts release];
+    [headers release];
     self.contentType = nil;
 	
 	[super dealloc];
