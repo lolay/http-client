@@ -41,6 +41,12 @@
 }
 
 /**
+ * Init with an alternative content-type
+ * @param contentType The contentType
+ */
+- (id) initWithContentType:(NSString*)inContentType;
+
+/**
  * This method sets the timeout value
  * @param timeoutValue The timeout, in seconds
  */

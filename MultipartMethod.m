@@ -29,8 +29,16 @@
 #import "DelegateMessenger.h"
 #import "StringPart.h"
 
+@interface MultipartMethod ()
+
+@property (nonatomic, retain) NSString* contentType;
+
+@end
+
 
 @implementation MultipartMethod
+
+@synthesize contentType = contentType_;
 
 - (id) init {
 	self = [super init];
@@ -39,10 +47,25 @@
 		methodParts = [[NSMutableArray alloc] init];
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 20; // DEFAULT
+        self.contentType = @"multipart/mixed; type=*/*";
 	}
 	
 	return self;
 }
+
+- (id) initWithContentType:(NSString*)inContentType {
+    self = [super init];
+    
+    if(self != nil) {
+		methodParts = [[NSMutableArray alloc] init];
+		headers = [[NSMutableDictionary alloc] init];
+		timeoutInSeconds = 20; // DEFAULT
+        self.contentType = inContentType;
+    }
+    
+    return self;
+}
+
 
 - (void)setTimeout:(int)timeoutValue {
 	timeoutInSeconds = timeoutValue;
@@ -87,7 +110,7 @@
 
 - (void)prepareRequestWithURL:(NSURL*)methodURL withRequest:(NSMutableURLRequest*)urlRequest {
 	NSString * boundary = [self generateBoundary];
-	NSString * contentType = [NSString stringWithFormat:@"multipart/mixed; type=*/*; boundary=%@", boundary];
+	NSString * contentType = [NSString stringWithFormat:@"%@; boundary=%@", self.contentType, boundary];
 	
 	//Set up the request
 	[urlRequest setURL:methodURL];
@@ -113,7 +136,7 @@
 	[requestBody appendData:[[NSString stringWithFormat:@"--%@--\r\n",boundary] dataUsingEncoding:encoding]];
 	
 	[urlRequest setHTTPBody:requestBody];
-	
+    
 	[requestBody release];
 }
 
@@ -145,6 +168,7 @@
 
 - (void) dealloc {
 	[methodParts release];
+    self.contentType = nil;
 	
 	[super dealloc];
 }
