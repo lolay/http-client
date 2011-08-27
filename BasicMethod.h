@@ -40,6 +40,9 @@
 	NSData* body;
 }
 
+- (NSDictionary*) parameters;
+- (NSDictionary*) headers;
+
 /**
  * This method sets the timeout value
  * @param timeoutValue The timeout, in seconds
