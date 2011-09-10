@@ -48,6 +48,10 @@
 	timeoutInSeconds = timeoutValue;
 }
 
+- (NSDictionary*) parameters {
+	return [[params retain] autorelease];
+}
+
 - (void)addParameter:(NSString*)paramData withName:(NSString*)paramName {
 	//Add the parameter to the parameters dictionary
 	id existingValue = [params valueForKey:paramName];
@@ -70,6 +74,10 @@
 	for (id key in dict) {
 		[params setValue:[dict objectForKey:key] forKey:key];
 	}
+}
+
+- (NSDictionary*) headers {
+	return [[headers retain] autorelease];
 }
 
 - (void)addHeader:(NSString*)headerData withName:(NSString*)headerName {
