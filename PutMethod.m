@@ -33,11 +33,27 @@
  * - methodURL: The URL to use for executing the PUT method
  */
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
-	return [super executeMethodSynchronously:methodURL methodType:@"PUT" dataInBody:YES contentType:@"application/x-www-form-urlencoded"];
+	return [super executeMethodSynchronously:methodURL methodType:@"PUT" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded"];
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
-	[super executeMethodAsynchronously:methodURL methodType:@"PUT" dataInBody:YES contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
+	[super executeMethodAsynchronously:methodURL methodType:@"PUT" dataInBody:YES contentType:contentType ? contentType :@"application/x-www-form-urlencoded" withDelegate:delegate];
+}
+
+- (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType {
+	body = [inBody retain];
+	contentType = [inContentType retain];
+}
+
+- (void) setStringBody:(NSString*) inBody contentType:(NSString*) inContentType {
+	body = [[inBody dataUsingEncoding:NSUTF8StringEncoding] retain];
+	contentType = [inContentType retain];
+}
+
+- (void) dealloc {
+	[contentType release];
+	
+	[super dealloc];
 }
 
 @end
