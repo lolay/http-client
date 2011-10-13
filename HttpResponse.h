@@ -43,7 +43,7 @@
 /**
  * The NSDictionary object which holds the response header fields
  */
-@property (readonly) NSDictionary * headerFields;
+@property (readonly, retain) NSDictionary * headerFields;
 
 /**
  * Create a HttpResponse object, populating it with the specified data and response object

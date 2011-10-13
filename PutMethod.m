@@ -41,19 +41,13 @@
 }
 
 - (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType {
-	body = [inBody retain];
-	contentType = [inContentType retain];
+	body = inBody;
+	contentType = inContentType;
 }
 
 - (void) setStringBody:(NSString*) inBody contentType:(NSString*) inContentType {
-	body = [[inBody dataUsingEncoding:NSUTF8StringEncoding] retain];
-	contentType = [inContentType retain];
-}
-
-- (void) dealloc {
-	[contentType release];
-	
-	[super dealloc];
+	body = [inBody dataUsingEncoding:NSUTF8StringEncoding];
+	contentType = inContentType;
 }
 
 @end

@@ -89,7 +89,7 @@
 		[boundaryString appendFormat:@"%c", [boundChars characterAtIndex:(random() % [boundChars length])]];
 	}
 	
-	return [boundaryString autorelease];
+	return boundaryString;
 }
 
 - (void)addPart:(id<Part>)newPart {
@@ -136,8 +136,6 @@
 	[requestBody appendData:[[NSString stringWithFormat:@"--%@--\r\n",boundary] dataUsingEncoding:encoding]];
 	
 	[urlRequest setHTTPBody:requestBody];
-    
-	[requestBody release];
 }
 
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
@@ -150,28 +148,18 @@
 	
 	HttpResponse * returnResponse = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
-	[urlRequest release];
-	
-	return [returnResponse autorelease];
+	return returnResponse;
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
 	
-	NSMutableURLRequest * urlRequest = [[[NSMutableURLRequest alloc] init] autorelease];
+	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
 		
 	[NSURLConnection connectionWithRequest:urlRequest delegate:messenger];
-}
-
-- (void) dealloc {
-	[methodParts release];
-    [headers release];
-    self.contentType = nil;
-	
-	[super dealloc];
 }
 
 @end

@@ -34,8 +34,8 @@
 	self = [super init];
 	
 	if (self != nil) {
-		name = [paramName retain];
-		file = [fileURL retain];
+		name = paramName;
+		file = fileURL;
 		compressFile = compress;
 		
 	}
@@ -44,7 +44,7 @@
 }
 
 +(FilePart*) filePartWithFile:(NSURL*)fileURL withName: (NSString*)paramName compressFile:(bool)compress {
-	return [[[FilePart alloc] initWithFile:fileURL withName:paramName compressFile:compress] autorelease];
+	return [[FilePart alloc] initWithFile:fileURL withName:paramName compressFile:compress];
 }
 
 - (void)appendData:(NSMutableData*)outputData {
@@ -56,7 +56,7 @@
 	
 	if (compressFile) {
 		NSData * tempFileData = [NSData dataWithContentsOfURL:file];
-		fileData = [[[HttpClientGzipUtility gzipData:tempFileData] retain] autorelease];
+		fileData = [HttpClientGzipUtility gzipData:tempFileData];
 		
 		if (fileData == nil) {
 			NSLog(@"Compressed data is nil!");
@@ -74,16 +74,6 @@
 	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n\r\n"] dataUsingEncoding:encoding]];
 	[outputData appendData:[NSData dataWithData:fileData]];
 	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
-}
-
-- (void) dealloc {
-	if (name != nil)
-		[name release];
-	
-	if (file != nil)
-		[name release];
-	
-	[super dealloc];
 }
 
 @end

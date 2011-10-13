@@ -12,9 +12,9 @@
 	self = [super init];
 	
 	if (self != nil) {
-		name = [paramName retain];
-		fileData = [inFileData retain];
-		fileName = [inFileName retain];
+		name = paramName;
+		fileData = inFileData;
+		fileName = inFileName;
 		compressFile = compress;
 	}
 	
@@ -22,7 +22,7 @@
 }
 
 + (FileDataPart*) filePartWithData:(NSData*)inFileData withName:(NSString*)paramName withFileName:(NSString*) inFileName compressFile:(bool)compress {
-	return [[[FileDataPart alloc] initWithData:inFileData withName:paramName withFileName:inFileName compressFile:compress] autorelease];
+	return [[FileDataPart alloc] initWithData:inFileData withName:paramName withFileName:inFileName compressFile:compress];
 }
 
 - (void)appendData:(NSMutableData*)outputData {
@@ -30,16 +30,16 @@
 	NSString* appendFileName;
 	
 	if (compressFile) {
-		appendFileData = [[HttpClientGzipUtility gzipData:fileData] retain];
-		appendFileName = [[fileName stringByAppendingString:@".gz"] retain];
+		appendFileData = [HttpClientGzipUtility gzipData:fileData];
+		appendFileName = [fileName stringByAppendingString:@".gz"];
 		
 		if (appendFileData == nil) {
 			NSLog(@"Compressed data is nil!");
 		}
 	}
 	else {
-		appendFileData = [fileData retain];
-		appendFileName = [fileName retain];
+		appendFileData = fileData;
+		appendFileName = fileName;
 	}
 	
 	[outputData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, appendFileName] dataUsingEncoding:encoding]];
@@ -47,17 +47,6 @@
 	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n\r\n"] dataUsingEncoding:encoding]];
 	[outputData appendData:[NSData dataWithData:appendFileData]];
 	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
-	
-	[appendFileData release];
-	[appendFileName release];
-}
-
-- (void) dealloc {
-	[name release];
-	[fileData release];
-	[fileName release];
-	
-	[super dealloc];
 }
 
 @end

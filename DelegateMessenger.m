@@ -45,15 +45,11 @@
 
 	DelegateMessenger * messenger = [[DelegateMessenger alloc] initWithDelegate:del];
 	
-	return [messenger autorelease];
+	return messenger;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response {
-	if (lastResponse != nil) {
-		[lastResponse release];
-	}
-	
-	lastResponse = [response retain];
+	lastResponse = response;
 
 	if ([delegate respondsToSelector:@selector(connectionReceivedResponse:)]) {
 		[delegate connectionReceivedResponse:response];
@@ -77,20 +73,7 @@
 		[delegate connectionFinishedLoading:response];
 	}
 	
-	[response release];
-	[receivedData release];
 	receivedData = nil;
-}
-
-- (void)dealloc {
-	if (receivedData != nil) {
-		[receivedData release];
-	}
-	if (lastResponse != nil) {
-		[lastResponse release];
-	}
-	
-	[super dealloc];
 }
 
 @end

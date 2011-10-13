@@ -49,7 +49,7 @@
 }
 
 - (NSDictionary*) parameters {
-	return [[params retain] autorelease];
+    return params;
 }
 
 - (void)addParameter:(NSString*)paramData withName:(NSString*)paramName {
@@ -63,7 +63,6 @@
 			[newValue addObject:existingValue];
 			[newValue addObject:paramData];
 			[params setValue:newValue forKey:paramName];
-			[newValue release];
 		}
 	} else {
 		[params setValue:paramData forKey:paramName];
@@ -77,7 +76,7 @@
 }
 
 - (NSDictionary*) headers {
-	return [[headers retain] autorelease];
+    return headers;
 }
 
 - (void)addHeader:(NSString*)headerData withName:(NSString*)headerName {
@@ -90,7 +89,7 @@
 		return nil;
 	}
 	
-	NSString *newString = [(NSString*) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef) string, CFSTR(" "), CFSTR(":/?#[]@!$&'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(encoding)) autorelease];
+	NSString *newString = (__bridge_transfer NSString*) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef) string, CFSTR(" "), CFSTR(":/?#[]@!$&'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(encoding));
 	newString = [newString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
 	if (newString) {
 		return newString;
@@ -137,8 +136,7 @@
 				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
 			}
 		}
-		body = [bodyData retain];
-		[bodyData release];
+		body = bodyData;
 	}
 		
 	//Loop over the items in the headers dictionary and add them to the request
@@ -159,8 +157,6 @@
 			[newURLString appendFormat:@"?%@", bodyString];
 			//Create a new URL, escaping characters as necessary
 			NSURL * newURL = [NSURL URLWithString:newURLString];
-			[bodyString release];
-			[newURLString release];
 			//Set the url request's url to be this new URL with the query appended
 			[request setURL:newURL];			
 		}
@@ -185,9 +181,7 @@
 	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
 	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
 	
-	[request release];
-	
-	return [responseObject autorelease];
+	return responseObject;
 }
 
 - (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
@@ -201,17 +195,6 @@
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
 	
 	[NSURLConnection connectionWithRequest:request delegate:messenger];
-	[request release];
-}
-
-- (void)dealloc {
-	NSLog(@"[BasicMethod dealloc] enter");
-
-	[params release];
-	[headers release];
-	[body release];
-	
-	[super dealloc];
 }
 
 @end

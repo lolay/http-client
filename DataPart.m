@@ -14,15 +14,15 @@
 	self = [super init];
 	
 	if (self != nil) {
-		key = [valueKey retain];
-		value = [valueData retain];
+		key = valueKey;
+		value = valueData;
 	}
 	
 	return self;
 }
 
 +(DataPart*) dataPartWithParameter:(NSData*)valueData withName:(NSString*)valueKey {
-	return [[[DataPart alloc] initWithParameter:valueData withName:valueKey] autorelease];
+	return [[DataPart alloc] initWithParameter:valueData withName:valueKey];
 }
 
 - (void)appendData:(NSMutableData*)outputData {
@@ -31,17 +31,6 @@
 	[outputData appendData:[[NSString stringWithFormat:@"Content-ID: <%@>\r\n\r\n",key] dataUsingEncoding:encoding]];
 	[outputData appendData:[NSData dataWithData:value]];
 	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
-}
-
-- (void)dealloc {
-	
-	if (key != nil)
-		[key release];
-	
-	if (value != nil)
-		[value release];
-	
-	[super dealloc];
 }
 
 @end

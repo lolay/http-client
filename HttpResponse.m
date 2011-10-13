@@ -35,11 +35,11 @@
 	self = [super init];
 	
 	if (self != nil) {
-		responseData = [data retain];
+		responseData = data;
 		responseString = nil;
-		headerFields = [[response allHeaderFields] retain];
+		headerFields = [response allHeaderFields];
 		statusCode = [response statusCode];
-		url = [response.URL retain];
+		url = response.URL;
 	}
 	
 	return self;
@@ -64,7 +64,7 @@
 - (NSHTTPCookie*) cookieForName:(NSString*) name {
 	for (NSHTTPCookie* cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:url]) {
 		if ([cookie.name isEqualToString:name]) {
-			return [[cookie retain] autorelease];
+			return cookie;
 		}
 	}
 	
@@ -73,16 +73,6 @@
 
 - (NSInteger) statusCode {
 	return statusCode;
-}
-
-- (void)dealloc {
-	[responseData release];
-	if (responseString != nil)
-		[responseString release];
-	[headerFields release];
-	[url release];
-	
-	[super dealloc];
 }
 
 @end
