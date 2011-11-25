@@ -31,7 +31,7 @@
 
 @interface MultipartMethod ()
 
-@property (nonatomic, retain) NSString* contentType;
+@property (nonatomic, strong) NSString* contentType;
 
 @end
 
