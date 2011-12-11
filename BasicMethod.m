@@ -38,7 +38,7 @@
 		//Initialize the dictionary used for storing parameters
 		params = [[NSMutableDictionary alloc] init];
 		headers = [[NSMutableDictionary alloc] init];
-		timeoutInSeconds = 20; // DEFAULT
+		timeoutInSeconds = 60; // DEFAULT
 	}
 	
 	return self;
