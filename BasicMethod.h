@@ -78,7 +78,7 @@
  * @param contentType The value to use for the Content-Type field in the header
  * @return A string containing whatever the was sent back after performing the GET or POST
  */
-- (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType;
+- (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType error:(NSError**) error;
 
 /**
  * This method executes the HttpMethod asynchronously

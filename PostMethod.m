@@ -33,8 +33,8 @@
  * Execute the POST method
  * - methodURL: The URL to use for executing the POST method
  */
-- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
-	return [super executeMethodSynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded"];
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
+	return [super executeMethodSynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded" error:error];
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {

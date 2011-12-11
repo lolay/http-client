@@ -29,9 +29,9 @@
 
 @implementation GetMethod
 
-- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**)error {
 	//Call the executeMethod function from the super class, giving the appropriate parameters
-	return [super executeMethodSynchronously:methodURL methodType:@"GET" dataInBody:NO contentType:@"application/x-www-form-urlencoded"];
+	return [super executeMethodSynchronously:methodURL methodType:@"GET" dataInBody:NO contentType:@"application/x-www-form-urlencoded" error:error];
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
