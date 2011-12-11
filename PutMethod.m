@@ -32,6 +32,9 @@
  * Execute the PUT method
  * - methodURL: The URL to use for executing the PUT method
  */
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [self executeSynchronouslyAtURL:methodURL error:NULL];
+}
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
 	return [super executeMethodSynchronously:methodURL methodType:@"PUT" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded" error:error];
 }

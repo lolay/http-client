@@ -138,6 +138,9 @@
 	[urlRequest setHTTPBody:requestBody];
 }
 
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [self executeSynchronouslyAtURL:methodURL error:NULL];
+}
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
