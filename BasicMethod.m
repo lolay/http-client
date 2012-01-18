@@ -179,14 +179,14 @@
 	HttpResponse * responseObject = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
 	if (errorResponse) {
-		NSLog(@"[BasicMethod executeMethodSynchronously] %@ Error was %@", [request URL], errorResponse);
+		DLog(@"[BasicMethod executeMethodSynchronously] %@ Error was %@", [request URL], errorResponse);
 		if (error != NULL) {
 			*error = errorResponse;
 		}
 	}
 	
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
 	
 	return responseObject;
 }
