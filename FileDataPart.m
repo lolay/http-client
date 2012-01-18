@@ -34,7 +34,7 @@
 		appendFileName = [fileName stringByAppendingString:@".gz"];
 		
 		if (appendFileData == nil) {
-			NSLog(@"Compressed data is nil!");
+			DLog(@"Compressed data is nil!");
 		}
 	}
 	else {

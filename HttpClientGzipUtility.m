@@ -47,7 +47,7 @@
 	
 	if (!pUncompressedData || [pUncompressedData length] == 0)
 	{
-		NSLog(@"%s: Error: Can't compress an empty or null NSData object.", __func__);
+		DLog(@"%s: Error: Can't compress an empty or null NSData object.", __func__);
 		return nil;
 	}
 	
@@ -113,7 +113,7 @@
 				errorMsg = @"Unknown error code.";
 				break;
 		}
-		NSLog(@"%s: deflateInit2() Error: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
+		DLog(@"%s: deflateInit2() Error: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
 		return nil;
 	}
 	
@@ -150,7 +150,7 @@
 		
 	} while ( deflateStatus == Z_OK );		
 	
-	NSLog(@"Buffer was size %u saved %u", [compressedData length], (NSUInteger) zlibStreamStruct.total_out);
+	DLog(@"Buffer was size %u saved %u", [compressedData length], (NSUInteger) zlibStreamStruct.total_out);
 	
 	// Check for zlib error and convert code to usable error message if appropriate
 	if (deflateStatus != Z_STREAM_END)
@@ -180,7 +180,7 @@
 				errorMsg = @"Unknown error code.";
 				break;
 		}
-		NSLog(@"%s: zlib error while attempting compression: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
+		DLog(@"%s: zlib error while attempting compression: \"%@\" Message: \"%s\"", __func__, errorMsg, zlibStreamStruct.msg);
 		
 		// Free data structures that were dynamically created for the stream.
 		deflateEnd(&zlibStreamStruct);
@@ -190,7 +190,7 @@
 	// Free data structures that were dynamically created for the stream.
 	deflateEnd(&zlibStreamStruct);
 	[compressedData setLength: zlibStreamStruct.total_out];
-	NSLog(@"%s: Compressed file from %d KB to %d KB", __func__, [pUncompressedData length]/1024, [compressedData length]/1024);
+	DLog(@"%s: Compressed file from %d KB to %d KB", __func__, [pUncompressedData length]/1024, [compressedData length]/1024);
 	
 	return compressedData;
 }

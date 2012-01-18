@@ -59,7 +59,7 @@
 		fileData = [HttpClientGzipUtility gzipData:tempFileData];
 		
 		if (fileData == nil) {
-			NSLog(@"Compressed data is nil!");
+			DLog(@"Compressed data is nil!");
 		}
 		else {
 			fileName = [fileName stringByAppendingString:@".gz"];

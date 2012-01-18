@@ -170,7 +170,7 @@
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
 
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
@@ -178,8 +178,8 @@
 	
 	HttpResponse * responseObject = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
 	
 	return responseObject;
 }
@@ -189,7 +189,7 @@
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 
-	NSLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+	DLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
 
 	//Execute the HTTP method
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
