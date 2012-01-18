@@ -39,6 +39,7 @@
  * @return A NSString* containing the results of the method execution
  */
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL;
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error;
 
 /**
  * Execute the method at the supplied URL.  The current thread continues executing, and results are sent through the delegate methods

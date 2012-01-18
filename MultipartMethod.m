@@ -139,12 +139,15 @@
 }
 
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [self executeSynchronouslyAtURL:methodURL error:NULL];
+}
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
 	NSHTTPURLResponse * response;
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:nil];
+	NSData *returnData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:error];
 	
 	HttpResponse * returnResponse = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
