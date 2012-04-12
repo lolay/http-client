@@ -8,6 +8,7 @@
  
  *
  *  Copyright (c) 2010 Scott Slaugh, Brigham Young University
+ *  Copyright (c) 2012 Lolay, Inc.
  *   
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
