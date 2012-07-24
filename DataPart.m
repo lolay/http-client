@@ -44,11 +44,11 @@
 }
 
 - (void)appendData:(NSMutableData*)outputData {
-	[outputData appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n"] dataUsingEncoding:encoding]];
-	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Type: application/octet-stream\r\n" dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Transfer-Encoding: binary\r\n" dataUsingEncoding:encoding]];
 	[outputData appendData:[[NSString stringWithFormat:@"Content-ID: <%@>\r\n\r\n",key] dataUsingEncoding:encoding]];
 	[outputData appendData:[NSData dataWithData:value]];
-	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[@"\r\n" dataUsingEncoding:encoding]];
 }
 
 @end

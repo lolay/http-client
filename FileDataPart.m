@@ -64,10 +64,10 @@
 	}
 	
 	[outputData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, appendFileName] dataUsingEncoding:encoding]];
-	[outputData appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n"] dataUsingEncoding:encoding]];
-	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Type: application/octet-stream\r\n" dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Transfer-Encoding: binary\r\n\r\n" dataUsingEncoding:encoding]];
 	[outputData appendData:[NSData dataWithData:appendFileData]];
-	[outputData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[@"\r\n" dataUsingEncoding:encoding]];
 }
 
 @end

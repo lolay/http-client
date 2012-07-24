@@ -48,8 +48,8 @@
 
 - (void)appendData:(NSMutableData*)outputData {	
 	[outputData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", name] dataUsingEncoding:encoding]];
-	[outputData appendData:[[NSString stringWithString:@"Content-Type: text/plain; charset=UTF-8\r\n"] dataUsingEncoding:encoding]];
-	[outputData appendData:[[NSString stringWithString:@"Content-Transfer-Encoding: binary\r\n"] dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Type: text/plain; charset=UTF-8\r\n" dataUsingEncoding:encoding]];
+	[outputData appendData:[@"Content-Transfer-Encoding: binary\r\n" dataUsingEncoding:encoding]];
 	[outputData appendData:[[NSString stringWithFormat:@"Content-ID: <%@>\r\n",name] dataUsingEncoding:encoding]];
 	[outputData appendData:[[NSString stringWithFormat:@"\r\n%@\r\n",value] dataUsingEncoding:encoding]];
 }
