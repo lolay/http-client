@@ -195,7 +195,7 @@
 		}
 	}
 	
-	DLog(@"Response url=%@, status=%i, body=%@", [request URL], [responseObject statusCode], [responseObject responseString]);
+	DLog(@"Response url=%@, status=%i, headers=%@, body=%@", [request URL], [responseObject statusCode], [responseObject headerFields], [responseObject responseString]);
 	
 	return responseObject;
 }
