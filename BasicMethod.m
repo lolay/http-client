@@ -53,6 +53,14 @@
     return params;
 }
 
+- (NSData*) body {
+	return body;
+}
+
+- (NSString*) bodyString {
+	return [[NSString alloc] initWithData:body encoding:encoding];
+}
+
 - (void)addParameter:(NSString*)paramData withName:(NSString*)paramName {
 	//Add the parameter to the parameters dictionary
 	id existingValue = [params valueForKey:paramName];
@@ -171,7 +179,8 @@
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
-	DLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+	NSString* requestBody = [self bodyString];
+	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
 
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
@@ -180,14 +189,13 @@
 	HttpResponse * responseObject = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
 	
 	if (errorResponse) {
-		DLog(@"[BasicMethod executeMethodSynchronously] %@ Error was %@", [request URL], errorResponse);
+		DLog(@"Error url=%@, error=%@", [request URL], errorResponse);
 		if (error != NULL) {
 			*error = errorResponse;
 		}
 	}
 	
-	DLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
-	DLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
+	DLog(@"Response url=%@, status=%i, body=%@", [request URL], [responseObject statusCode], [responseObject responseString]);
 	
 	return responseObject;
 }
@@ -197,7 +205,8 @@
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 
-	DLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
+	NSString* requestBody = [self bodyString];
+	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
 
 	//Execute the HTTP method
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];

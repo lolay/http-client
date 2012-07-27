@@ -43,6 +43,8 @@
 
 - (NSDictionary*) parameters;
 - (NSDictionary*) headers;
+- (NSData*) body;
+- (NSString*) bodyString;
 
 /**
  * This method sets the timeout value
