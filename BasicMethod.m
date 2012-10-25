@@ -117,11 +117,16 @@
 	//Set the method type
 	[request setHTTPMethod:methodType];
 	//Set the content-type
-	[request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    if([headers objectForKey:@"Content-Type"] == nil) {
+        [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    }
 	//Set the timeout
 	[request setTimeoutInterval:timeoutInSeconds];
 	//Gzip header
-	[request addValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    if([headers objectForKey:@"Accept-Encoding"] == nil) {
+        [request addValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+    }
 	
 	//Create a data object to hold the body while we're creating it
 	if (! body) {
