@@ -38,6 +38,7 @@
 	NSMutableDictionary * params;
 	NSMutableDictionary * headers;
 	int timeoutInSeconds;
+    NSURLRequestCachePolicy cachePolicy;
 	NSData* body;
 }
 
@@ -51,6 +52,8 @@
  * @param timeoutValue The timeout, in seconds
  */
 - (void)setTimeout:(int)timeoutValue;
+
+- (void)setCachePolicy:(NSURLRequestCachePolicy)cachePolicyValue;
 
 /**
  * This method adds a parameter to be used in a GET or POST operation.  The order of the parameters is not guaranteed

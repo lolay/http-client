@@ -40,6 +40,7 @@
 		params = [[NSMutableDictionary alloc] init];
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 60; // DEFAULT
+        cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
 	}
 	
 	return self;
@@ -47,6 +48,10 @@
 
 - (void)setTimeout:(int)timeoutValue {
 	timeoutInSeconds = timeoutValue;
+}
+
+- (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
+    cachePolicy = cachePolicyValue;
 }
 
 - (NSDictionary*) parameters {
@@ -176,6 +181,10 @@
 	
 	//Create a new URL request object
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
+    
+    if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
+        [request setCachePolicy:cachePolicy];
+    }
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
