@@ -165,14 +165,15 @@
 }
 
 - (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType error:(NSError**) error {
-	
+	NSDate* methodStart = [NSDate date];
+    
 	//Create a new URL request object
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
 	DLog(@"[BasicMethod executeMethodSynchronously] %@", [request URL]);
-
+    
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
 	NSError* errorResponse = nil;
@@ -189,6 +190,8 @@
 	DLog(@"[BasicMethod executeMethodSynchronously] %@ Status code was %d", [request URL], [responseObject statusCode]);
 	DLog(@"[BasicMethod executeMethodSynchronously] %@ Result was %@", [request URL], [responseObject responseString]);
 	
+    NSDate* methodFinish = [NSDate date];
+	DLog(@"[BasicMethod executeMethodSynchronously] %@ Execution time was %f", [request URL], [methodFinish timeIntervalSinceDate:methodStart]);
 	return responseObject;
 }
 
