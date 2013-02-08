@@ -57,7 +57,7 @@
 	}
 }
 
-- (void)connection:(NSURLConnection *)connectiondidFailWithError:(NSError *)error {
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	if ([delegate respondsToSelector:@selector(connectionFailedWithError:)]) {
 		[delegate connectionFailedWithError:error];
 	}
