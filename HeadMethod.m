@@ -1,12 +1,9 @@
 /**
- *  @file HttpClient.h
- *  HttpClient
- *
- *  This is a single file that needs to be imported in order to use HttpClient
- *
+ *  @file HeadMethod.m
+ *	HttpClient
  *
  *  Copyright (c) 2010 Scott Slaugh, Brigham Young University
- *  Copyright (c) 2012 Lolay, Inc.
+ *  Copyright (c) 2013 Lolay, Inc.
  *   
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +25,21 @@
  *
  */
 
-#import "GetMethod.h"
 #import "HeadMethod.h"
-#import "PostMethod.h"
-#import "MultipartMethod.h"
-#import "PutMethod.h"
-#import "DeleteMethod.h"
-#import "StringPart.h"
-#import "FilePart.h"
-#import "HttpResponse.h"
-#import "DataPart.h"
-#import "FileDataPart.h"
+
+
+@implementation HeadMethod
+
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL {
+	return [self executeSynchronouslyAtURL:methodURL error:NULL];
+}
+- (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**)error {
+	//Call the executeMethod function from the super class, giving the appropriate parameters
+	return [super executeMethodSynchronously:methodURL methodType:@"HEAD" dataInBody:NO contentType:@"application/x-www-form-urlencoded" error:error];
+}
+
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+	[super executeMethodAsynchronously:methodURL methodType:@"HEAD" dataInBody:NO contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
+}
+
+@end

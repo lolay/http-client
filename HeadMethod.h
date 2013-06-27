@@ -1,12 +1,9 @@
 /**
- *  @file HttpClient.h
+ *  @file HeadMethod.h
  *  HttpClient
  *
- *  This is a single file that needs to be imported in order to use HttpClient
- *
- *
  *  Copyright (c) 2010 Scott Slaugh, Brigham Young University
- *  Copyright (c) 2012 Lolay, Inc.
+ *  Copyright (c) 2013 Lolay, Inc.
  *   
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +25,15 @@
  *
  */
 
-#import "GetMethod.h"
-#import "HeadMethod.h"
-#import "PostMethod.h"
-#import "MultipartMethod.h"
-#import "PutMethod.h"
-#import "DeleteMethod.h"
-#import "StringPart.h"
-#import "FilePart.h"
-#import "HttpResponse.h"
-#import "DataPart.h"
-#import "FileDataPart.h"
+#import <Foundation/Foundation.h>
+#import "HttpMethod.h"
+#import "BasicMethod.h"
+
+/**
+ * HeadMethod will perform a HEAD operation, sending the parameters added as part of the URL query (the length of the parameters is limited)
+ */
+@interface HeadMethod : BasicMethod <HttpMethod> {
+
+}
+
+@end
