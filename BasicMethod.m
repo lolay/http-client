@@ -4,17 +4,17 @@
  *
  *  Copyright (c) 2010 Scott Slaugh, Brigham Young University
  *  Copyright (c) 2012 Lolay, Inc.
- *   
+ *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
  *  in the Software without restriction, including without limitation the rights
  *  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  *  copies of the Software, and to permit persons to whom the Software is
  *  furnished to do so, subject to the following conditions:
- *  
+ *
  *  The above copyright notice and this permission notice shall be included in
  *  all copies or substantial portions of the Software.
- *   
+ *
  *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  *  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -41,6 +41,7 @@
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 60; // DEFAULT
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
+		encodeParameterNames = YES;
 	}
 	
 	return self;
@@ -52,6 +53,10 @@
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
     cachePolicy = cachePolicyValue;
+}
+
+- (void) setEncodeParameterNames:(BOOL) encodeParameterNamesIn {
+	encodeParameterNames = encodeParameterNamesIn;
 }
 
 - (NSDictionary*) parameters {
@@ -149,22 +154,22 @@
 					if (pCount > 1) {
 						[bodyData appendData:[@"&" dataUsingEncoding:encoding]];
 					}
-					[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:arrayValue]] dataUsingEncoding:encoding]];
+					[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", encodeParameterNames ? [self encodeUrl:cKey] : cKey, [self encodeUrl:arrayValue]] dataUsingEncoding:encoding]];
 				}
 			} else {
-				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
+				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", encodeParameterNames ? [self encodeUrl:cKey] : cKey, [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
 			}
 		}
 		body = bodyData;
 	}
-		
+	
 	//Loop over the items in the headers dictionary and add them to the request
 	for (NSString* cHeaderKey in headers) {
 		[request addValue:[headers valueForKey:cHeaderKey] forHTTPHeaderField:cHeaderKey];
 	}
 	
 	//Add the body data in either the actual HTTP body or as part of the URL query
-	if (dataInBody || [body length] > 0) { 
+	if (dataInBody || [body length] > 0) {
 		if ([methodType isEqualToString:@"POST"]|| [methodType isEqualToString:@"PUT"]) {  //For post/put methods, we add the parameters to the body
 			[request setHTTPBody:body];
 		} else if ([methodType isEqualToString:@"GET"]) { //For get methods, we have to add parameters to the url
@@ -177,9 +182,9 @@
 			//Create a new URL, escaping characters as necessary
 			NSURL * newURL = [NSURL URLWithString:newURLString];
 			//Set the url request's url to be this new URL with the query appended
-			[request setURL:newURL];			
+			[request setURL:newURL];
 		}
-	} 
+	}
 }
 
 - (HttpResponse*)executeMethodSynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType error:(NSError**) error {
@@ -195,7 +200,7 @@
 	
 	NSString* requestBody = [self bodyString];
 	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
-
+	
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
 	NSError* errorResponse = nil;
@@ -218,10 +223,10 @@
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
-
+	
 	NSString* requestBody = [self bodyString];
 	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
-
+	
 	//Execute the HTTP method
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
 	
