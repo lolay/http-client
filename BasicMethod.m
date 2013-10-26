@@ -41,6 +41,7 @@
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 60; // DEFAULT
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
+		encodeParameterNames = YES;
 	}
 	
 	return self;
@@ -52,6 +53,10 @@
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
     cachePolicy = cachePolicyValue;
+}
+
+- (void) setEncodeParameterNames:(BOOL) encodeParameterNamesIn {
+	encodeParameterNames = encodeParameterNamesIn;
 }
 
 - (NSDictionary*) parameters {
@@ -149,10 +154,10 @@
 					if (pCount > 1) {
 						[bodyData appendData:[@"&" dataUsingEncoding:encoding]];
 					}
-					[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:arrayValue]] dataUsingEncoding:encoding]];
+					[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", encodeParameterNames ? [self encodeUrl:cKey] : cKey, [self encodeUrl:arrayValue]] dataUsingEncoding:encoding]];
 				}
 			} else {
-				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", [self encodeUrl:cKey], [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
+				[bodyData appendData:[[NSString stringWithFormat:@"%@=%@", encodeParameterNames ? [self encodeUrl:cKey] : cKey, [self encodeUrl:[params valueForKey:cKey]]] dataUsingEncoding:encoding]];
 			}
 		}
 		body = bodyData;
