@@ -78,7 +78,8 @@
 	NSString * boundChars = @"-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	
 	//Set the seed value for the random number generator
-	srandom(time(NULL));
+	// Loss of precesion should be ok for a seed
+	srandom((unsigned) time(NULL));
 	
 	//Get a random number between 30 and 40 for the length of the boundary
 	int boundSize = 30 + (random() % 11);

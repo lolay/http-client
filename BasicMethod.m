@@ -194,7 +194,7 @@
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
 	NSString* requestBody = [self bodyString];
-	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
+	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%lu)", (unsigned long) requestBody.length]);
 
 	//Execute the HTTP method, saving the return data
 	NSHTTPURLResponse * response;
@@ -209,7 +209,7 @@
 		}
 	}
 	
-	DLog(@"Response url=%@, status=%i, headers=%@, body=%@", [request URL], [responseObject statusCode], [responseObject headerFields], [responseObject responseString]);
+	DLog(@"Response url=%@, status=%li, headers=%@, body=%@", [request URL], (long) [responseObject statusCode], [responseObject headerFields], [responseObject responseString]);
 	
 	return responseObject;
 }
@@ -220,7 +220,7 @@
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 
 	NSString* requestBody = [self bodyString];
-	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%i)", requestBody.length]);
+	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%lu)", (unsigned long) requestBody.length]);
 
 	//Execute the HTTP method
 	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
