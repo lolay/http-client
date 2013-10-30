@@ -191,7 +191,7 @@
 	// Free data structures that were dynamically created for the stream.
 	deflateEnd(&zlibStreamStruct);
 	[compressedData setLength: zlibStreamStruct.total_out];
-	DLog(@"Compressed file from %lu KB to %lu KB", [pUncompressedData length]/1024, [compressedData length]/1024);
+	DLog(@"Compressed file from %lu KB to %lu KB", (unsigned long)[pUncompressedData length]/1024, (unsigned long)[compressedData length]/1024);
 	
 	return compressedData;
 }
