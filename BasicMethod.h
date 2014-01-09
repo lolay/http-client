@@ -39,6 +39,7 @@
 	NSMutableDictionary * headers;
 	int timeoutInSeconds;
     NSURLRequestCachePolicy cachePolicy;
+	BOOL handleCookies;
 	NSData* body;
 	BOOL encodeParameterNames;
 }
@@ -55,6 +56,8 @@
 - (void)setTimeout:(int)timeoutValue;
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy)cachePolicyValue;
+
+- (void) setHandleCookies: (BOOL)shouldHandleCookies;
 
 - (void) setEncodeParameterNames:(BOOL) encodeParameterNames;
 

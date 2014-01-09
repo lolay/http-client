@@ -41,6 +41,7 @@
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 60; // DEFAULT
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
+		handleCookies = YES;
 		encodeParameterNames = YES;
 	}
 	
@@ -53,6 +54,11 @@
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
     cachePolicy = cachePolicyValue;
+}
+
+- (void) setHandleCookies:(BOOL)shouldHandleCookies
+{
+	handleCookies = shouldHandleCookies;
 }
 
 - (void) setEncodeParameterNames:(BOOL) encodeParameterNamesIn {
@@ -195,7 +201,8 @@
     if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
         [request setCachePolicy:cachePolicy];
     }
-	[request setHTTPShouldHandleCookies: NO];
+	
+	[request setHTTPShouldHandleCookies: handleCookies];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
