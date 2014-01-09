@@ -195,6 +195,7 @@
     if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
         [request setCachePolicy:cachePolicy];
     }
+	[request setHTTPShouldHandleCookies: NO];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	
