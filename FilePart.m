@@ -28,6 +28,7 @@
 #import "FilePart.h"
 #import "HttpClientGzipUtility.h"
 #import "Constants.h"
+#import "LolayHttpClientGlobals.h"
 
 @implementation FilePart
 

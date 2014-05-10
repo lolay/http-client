@@ -28,7 +28,7 @@
 #import "BasicMethod.h"
 #import "Constants.h"
 #import "DelegateMessenger.h"
-
+#import "LolayHttpClientGlobals.h"
 
 @implementation BasicMethod
 

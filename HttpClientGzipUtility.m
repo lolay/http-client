@@ -31,6 +31,7 @@
  */
 
 #import "HttpClientGzipUtility.h"
+#import "LolayHttpClientGlobals.h"
 
 @implementation HttpClientGzipUtility
 
