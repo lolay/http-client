@@ -10,7 +10,6 @@
 		324D0FA5191ED209007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA4191ED209007ABFD7 /* Foundation.framework */; };
 		324D0FB3191ED209007ABFD7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FB2191ED209007ABFD7 /* XCTest.framework */; };
 		324D0FB4191ED209007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA4191ED209007ABFD7 /* Foundation.framework */; };
-		324D0FB6191ED209007ABFD7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FB5191ED209007ABFD7 /* UIKit.framework */; };
 		324D0FB9191ED209007ABFD7 /* libLolayHttpClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA1191ED209007ABFD7 /* libLolayHttpClient.a */; };
 		324D0FBF191ED209007ABFD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324D0FBD191ED209007ABFD7 /* InfoPlist.strings */; };
 		324D0FC1191ED209007ABFD7 /* LolayHttpClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FC0191ED209007ABFD7 /* LolayHttpClientTests.m */; };
@@ -76,7 +75,6 @@
 		324D0FA8191ED209007ABFD7 /* LolayHttpClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LolayHttpClient-Prefix.pch"; sourceTree = "<group>"; };
 		324D0FB1191ED209007ABFD7 /* LolayHttpClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LolayHttpClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		324D0FB2191ED209007ABFD7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		324D0FB5191ED209007ABFD7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		324D0FBC191ED209007ABFD7 /* LolayHttpClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LolayHttpClientTests-Info.plist"; sourceTree = "<group>"; };
 		324D0FBE191ED209007ABFD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		324D0FC0191ED209007ABFD7 /* LolayHttpClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LolayHttpClientTests.m; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 			files = (
 				324D0FB3191ED209007ABFD7 /* XCTest.framework in Frameworks */,
 				324D100D191ED2F3007ABFD7 /* libz.dylib in Frameworks */,
-				324D0FB6191ED209007ABFD7 /* UIKit.framework in Frameworks */,
 				324D0FB9191ED209007ABFD7 /* libLolayHttpClient.a in Frameworks */,
 				324D0FB4191ED209007ABFD7 /* Foundation.framework in Frameworks */,
 			);
@@ -170,7 +167,6 @@
 				324D100B191ED2F3007ABFD7 /* libz.dylib */,
 				324D0FA4191ED209007ABFD7 /* Foundation.framework */,
 				324D0FB2191ED209007ABFD7 /* XCTest.framework */,
-				324D0FB5191ED209007ABFD7 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
