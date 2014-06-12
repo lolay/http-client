@@ -35,11 +35,21 @@
 	return [self executeSynchronouslyAtURL:methodURL error:NULL];
 }
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
-	return [super executeMethodSynchronously:methodURL methodType:@"DELETE" dataInBody:NO contentType:@"application/x-www-form-urlencoded" error:error];
+	return [super executeMethodSynchronously:methodURL methodType:@"DELETE" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded" error:error];
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
-	[super executeMethodAsynchronously:methodURL methodType:@"DELETE" dataInBody:NO contentType:@"application/x-www-form-urlencoded" withDelegate:delegate];
+	[super executeMethodAsynchronously:methodURL methodType:@"DELETE" dataInBody:YES contentType:contentType ? contentType :@"application/x-www-form-urlencoded" withDelegate:delegate];
+}
+
+- (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType {
+	body = inBody;
+	contentType = inContentType;
+}
+
+- (void) setStringBody:(NSString*) inBody contentType:(NSString*) inContentType {
+	body = [inBody dataUsingEncoding:NSUTF8StringEncoding];
+	contentType = inContentType;
 }
 
 @end

@@ -34,7 +34,11 @@
  * @version 0.5
  */
 @interface DeleteMethod : BasicMethod <HttpMethod> {
-
+	NSString* contentType;
 }
+
+- (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType;
+- (void) setStringBody:(NSString*) inBody contentType:(NSString*) inContentType;
+
 
 @end
