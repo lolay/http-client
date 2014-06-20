@@ -29,6 +29,7 @@
 #import "Constants.h"
 #import "DelegateMessenger.h"
 #import "StringPart.h"
+#import "LolayHttpClientGlobals.h"
 
 @interface MultipartMethod ()
 
@@ -147,13 +148,24 @@
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
-	
+    NSData *requestBodyData = [urlRequest HTTPBody];
+    DLog(@"Request url=%@, headers=%@, body=%@", [urlRequest URL], headers, requestBodyData.length < 4096 ? [[NSString alloc] initWithData:requestBodyData encoding:encoding] : [NSString stringWithFormat:@"(length=%lu)", (unsigned long)requestBodyData.length]);
+    
 	NSHTTPURLResponse * response;
-	NSData *returnData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:error];
+    NSError *errorResponse;
+	NSData *returnData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&errorResponse];
+	HttpResponse *HTTPResponse = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
+    
+    if (errorResponse) {
+        DLog(@"Error url=%@, error=%@", [urlRequest URL], errorResponse);
+		if (error != NULL) {
+			*error = errorResponse;
+		}
+    }
+    
+    DLog(@"Response url=%@, status=%li, headers=%@, body=%@", [urlRequest URL], (long)[HTTPResponse statusCode], [HTTPResponse headerFields], [HTTPResponse responseString]);
 	
-	HttpResponse * returnResponse = [[HttpResponse alloc] initWithHttpURLResponse:response withData:returnData];
-	
-	return returnResponse;
+	return HTTPResponse;
 }
 
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
