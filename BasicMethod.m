@@ -176,9 +176,9 @@
 	
 	//Add the body data in either the actual HTTP body or as part of the URL query
 	if (dataInBody || [body length] > 0) { 
-		if ([methodType isEqualToString:@"POST"]|| [methodType isEqualToString:@"PUT"]|| [methodType isEqualToString:@"DELETE"]) {  //For post/put methods, we add the parameters to the body
+		if ([methodType isEqualToString:@"POST"]|| [methodType isEqualToString:@"PUT"]) {  //For post/put methods, we add the parameters to the body
 			[request setHTTPBody:body];
-		} else if ([methodType isEqualToString:@"GET"] ) { //For get methods, we have to add parameters to the url
+		} else if ([methodType isEqualToString:@"GET"]|| [methodType isEqualToString:@"DELETE"] ) { //For get methods, we have to add parameters to the url
 			//Get a mutable string so that we can add the parameters to the end as query arguments
 			NSMutableString * newURLString = [[NSMutableString alloc] initWithString:[methodURL absoluteString]];
 			//Convert the body data into a string
