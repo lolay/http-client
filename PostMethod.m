@@ -41,8 +41,8 @@
 	return [super executeMethodSynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType : @"application/x-www-form-urlencoded" error:error];
 }
 
-- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
-	[super executeMethodAsynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType :@"application/x-www-form-urlencoded" withDelegate:delegate];
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withHandler:(MethodHandler)methodHandler{
+	[super executeMethodAsynchronously:methodURL methodType:@"POST" dataInBody:YES contentType:contentType ? contentType :@"application/x-www-form-urlencoded" withHandler:methodHandler];
 }
 
 - (void) setBody:(NSData*) inBody contentType:(NSString*) inContentType {

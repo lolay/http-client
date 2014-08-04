@@ -64,7 +64,12 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[receivedData appendData:data];
+    if ([delegate respondsToSelector:@selector(connectionDidRecieveData:)]) {
+        [delegate connectionDidRecieveData:data];
+    }
+    else{
+        [receivedData appendData:data];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

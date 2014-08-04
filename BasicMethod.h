@@ -29,6 +29,8 @@
 #import "HttpMethod.h"
 #import "HttpClientDelegate.h"
 
+
+
 /**
  * BasicMethod is a superclass for the various HTTP client methods.  It isn't meant to be instatiated by client classes, and is just used to hold some common functionality in a super-class.
  * @author Scott Slaugh
@@ -43,6 +45,8 @@
 	NSData* body;
 	BOOL encodeParameterNames;
 }
+
+@property(nonatomic, readonly, assign) NSUInteger tryCount;
 
 - (NSDictionary*) parameters;
 - (NSDictionary*) headers;
@@ -99,6 +103,8 @@
  * @param contentType The value to use for the Content-Type field in the header
  * @param delegate The object to receive HttpClientDelegate methods
  */
-- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate>)delegate;
+- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withHandler:(MethodHandler)methodHandler;
+
+-(void) cancel;
 
 @end

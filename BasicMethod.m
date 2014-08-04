@@ -30,6 +30,14 @@
 #import "DelegateMessenger.h"
 #import "LolayHttpClientGlobals.h"
 
+@interface BasicMethod()
+
+@property(nonatomic, strong) NSURLSession *session;
+@property(nonatomic, strong) NSURLSessionDataTask *task;
+@property(nonatomic, assign) NSUInteger tryCount;
+
+@end
+
 @implementation BasicMethod
 
 - (id)init {
@@ -43,6 +51,7 @@
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
 		handleCookies = YES;
 		encodeParameterNames = YES;
+        self.tryCount = 0;
 	}
 	
 	return self;
@@ -198,6 +207,8 @@
 	//Create a new URL request object
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
     
+    self.tryCount++;
+
     if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
         [request setCachePolicy:cachePolicy];
     }
@@ -227,18 +238,36 @@
 	return responseObject;
 }
 
-- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+- (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withHandler:(MethodHandler)methodHandler {
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
+    self.tryCount++;
+    
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 
 	NSString* requestBody = [self bodyString];
 	DLog(@"Request url=%@, headers=%@, parameters=%@, body=%@", [request URL], [self headers], [self parameters], requestBody.length < 4096 ? requestBody : [NSString stringWithFormat:@"(length=%lu)", (unsigned long) requestBody.length]);
 
 	//Execute the HTTP method
-	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
+	//DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
 	
-	[NSURLConnection connectionWithRequest:request delegate:messenger];
+	//[NSURLConnection connectionWithRequest:request delegate:messenger];
+
+    self.session = [NSURLSession sharedSession];
+    
+    self.task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (methodHandler != nil) {
+            methodHandler(data, response, error);
+        }
+        
+    }];
+    
+    [self.task resume];
+}
+
+-(void) cancel {
+    [self.task cancel];
 }
 
 @end

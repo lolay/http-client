@@ -34,6 +34,8 @@
 @interface MultipartMethod ()
 
 @property (nonatomic, strong) NSString* contentType;
+@property(nonatomic, strong) NSURLSession *session;
+@property(nonatomic, strong) NSURLSessionDataTask *task;
 
 @end
 
@@ -168,15 +170,24 @@
 	return HTTPResponse;
 }
 
-- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withDelegate:(id<HttpClientDelegate,NSObject>)delegate {
+- (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withHandler:(MethodHandler)methodHandler {
 	
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
-	DelegateMessenger * messenger = [DelegateMessenger delegateMessengerWithDelegate:delegate];
-		
-	[NSURLConnection connectionWithRequest:urlRequest delegate:messenger];
+    self.session = [NSURLSession sharedSession];
+    
+    self.task = [self.session dataTaskWithRequest:urlRequest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (methodHandler != nil) {
+            methodHandler(data, response, error);
+        }
+        
+    }];
+    
+    [self.task resume];
+
 }
 
 @end
