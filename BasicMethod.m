@@ -51,7 +51,6 @@
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
 		handleCookies = YES;
 		encodeParameterNames = YES;
-        self.tryCount = 0;
 	}
 	
 	return self;

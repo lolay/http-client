@@ -34,9 +34,9 @@
 @interface MultipartMethod ()
 
 @property (nonatomic, strong) NSString* contentType;
-@property(nonatomic, strong) NSURLSession *session;
-@property(nonatomic, strong) NSURLSessionDataTask *task;
-
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSURLSessionDataTask *task;
+@property (nonatomic, assign) NSUInteger tryCount;
 @end
 
 
@@ -149,6 +149,8 @@
 - (HttpResponse*)executeSynchronouslyAtURL:(NSURL*)methodURL error:(NSError**) error {
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
+    self.tryCount++;
+    
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
     NSData *requestBodyData = [urlRequest HTTPBody];
     DLog(@"Request url=%@, headers=%@, body=%@", [urlRequest URL], headers, requestBodyData.length < 4096 ? [[NSString alloc] initWithData:requestBodyData encoding:encoding] : [NSString stringWithFormat:@"(length=%lu)", (unsigned long)requestBodyData.length]);
@@ -174,6 +176,8 @@
 	
 	NSMutableURLRequest * urlRequest = [[NSMutableURLRequest alloc] init];
 	
+    self.tryCount++;
+    
 	[self prepareRequestWithURL:methodURL withRequest:urlRequest];
 	
     self.session = [NSURLSession sharedSession];

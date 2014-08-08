@@ -41,6 +41,8 @@
 	int timeoutInSeconds;
 }
 
+@property (readonly, nonatomic, assign) NSUInteger tryCount;
+
 /**
  * Init with an alternative content-type
  * @param contentType The contentType
