@@ -52,6 +52,7 @@ typedef void (^MethodHandler)(NSData *data, NSURLResponse *response, NSError *er
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withHandler:(MethodHandler)methodHandler;
 
 - (NSUInteger)tryCount;
+- (BOOL)cancelled;
 
 @end
 

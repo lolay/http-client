@@ -36,6 +36,7 @@
 @property(nonatomic, strong) NSURLSessionDataTask *task;
 @property(nonatomic, assign) NSUInteger tryCount;
 
+
 @end
 
 @implementation BasicMethod
@@ -252,21 +253,29 @@
 	
 	//[NSURLConnection connectionWithRequest:request delegate:messenger];
 
+    __weak BasicMethod *method = self;
+    
+    if (!self.cancelled) {
     self.session = [NSURLSession sharedSession];
     
     self.task = [self.session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        if (methodHandler != nil) {
+        // make sure to not call back if we were cancelled during our task.
+        if (methodHandler != nil && !method.cancelled) {
             methodHandler(data, response, error);
         }
         
     }];
     
     [self.task resume];
+    }
 }
 
 -(void) cancel {
     [self.task cancel];
+    self.session = nil;
+    self.task = nil;
+    self.cancelled = YES;
 }
 
 @end

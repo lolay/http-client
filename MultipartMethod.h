@@ -42,6 +42,7 @@
 }
 
 @property (readonly, nonatomic, assign) NSUInteger tryCount;
+@property(nonatomic, assign) BOOL cancelled;
 
 /**
  * Init with an alternative content-type

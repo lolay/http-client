@@ -47,6 +47,7 @@
 }
 
 @property(nonatomic, readonly, assign) NSUInteger tryCount;
+@property(nonatomic, assign) BOOL cancelled;
 
 - (NSDictionary*) parameters;
 - (NSDictionary*) headers;
