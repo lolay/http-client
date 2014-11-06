@@ -36,6 +36,9 @@ typedef void (^MethodHandler)(NSData *data, NSURLResponse *response, NSError *er
  */
 @protocol HttpMethod <NSObject>
 
+@property(nonatomic, readonly, strong) NSDate *lastAttemptTime;
+@property(nonatomic, readonly, strong) NSDate *initialAttemptTime;
+
 /**
  * Execute the method at the supplied URL, blocking the current thread until the result is returned
  * @param methodURL The URL to use for executing the method
@@ -51,6 +54,7 @@ typedef void (^MethodHandler)(NSData *data, NSURLResponse *response, NSError *er
  */
 - (void)executeAsynchronouslyAtURL:(NSURL*)methodURL withHandler:(MethodHandler)methodHandler;
 
+- (int)timeout;
 - (NSUInteger)tryCount;
 - (BOOL)cancelled;
 

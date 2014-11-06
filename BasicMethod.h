@@ -48,6 +48,8 @@
 
 @property(nonatomic, readonly, assign) NSUInteger tryCount;
 @property(nonatomic, assign) BOOL cancelled;
+@property(nonatomic, readonly, strong) NSDate *lastAttemptTime;
+@property(nonatomic, readonly, strong) NSDate *initialAttemptTime;
 
 - (NSDictionary*) parameters;
 - (NSDictionary*) headers;
@@ -59,6 +61,7 @@
  * @param timeoutValue The timeout, in seconds
  */
 - (void)setTimeout:(int)timeoutValue;
+- (int)timeout;
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy)cachePolicyValue;
 

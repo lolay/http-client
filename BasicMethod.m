@@ -35,7 +35,9 @@
 @property(nonatomic, strong) NSURLSession *session;
 @property(nonatomic, strong) NSURLSessionDataTask *task;
 @property(nonatomic, assign) NSUInteger tryCount;
-
+@property(nonatomic, strong) NSDate *lastAttemptTime;
+@property(nonatomic, strong) NSDate *initialAttemptTime;
+@property(nonatomic, assign) NSTimeInterval maxTimeToTry;
 
 @end
 
@@ -59,6 +61,10 @@
 
 - (void)setTimeout:(int)timeoutValue {
 	timeoutInSeconds = timeoutValue;
+}
+
+- (int)timeout {
+    return timeoutInSeconds;
 }
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
@@ -208,7 +214,14 @@
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
     
     self.tryCount++;
+    request.timeoutInterval = timeoutInSeconds;
 
+    self.lastAttemptTime = [NSDate date];
+    
+    if (self.initialAttemptTime == nil) {
+        self.initialAttemptTime = [NSDate date];
+    }
+    
     if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
         [request setCachePolicy:cachePolicy];
     }
@@ -241,7 +254,14 @@
 - (void)executeMethodAsynchronously:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withHandler:(MethodHandler)methodHandler {
 	NSMutableURLRequest * request = [[NSMutableURLRequest alloc] init];
 	
+    request.timeoutInterval = timeoutInSeconds;
+    
     self.tryCount++;
+    self.lastAttemptTime = [NSDate date];
+    
+    if (self.initialAttemptTime == nil) {
+        self.initialAttemptTime = [NSDate date];
+    }
     
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 
@@ -276,6 +296,7 @@
     self.session = nil;
     self.task = nil;
     self.cancelled = YES;
+    self.lastAttemptTime = nil;
 }
 
 @end
