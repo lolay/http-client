@@ -108,12 +108,12 @@
 		return nil;
 	}
 	
-	NSString *newString = (__bridge_transfer NSString*) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef) string, CFSTR(" "), CFSTR(":/?#[]@!$&'()*+,;=\"<>%{}|\\^~`"), CFStringConvertNSStringEncodingToEncoding(encoding));
-	newString = [newString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-	if (newString) {
-		return newString;
-	}
-	return @"";
+    NSString *newString = [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLPathAllowedCharacterSet]];
+    newString = [newString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    if (newString) {
+        return newString;
+    }
+    return @"";
 }
 
 - (void)prepareMethod:(NSURL*)methodURL methodType:(NSString*)methodType dataInBody:(bool)dataInBody contentType:(NSString*)contentType withRequest:(NSMutableURLRequest*)request {
