@@ -28,7 +28,7 @@
 #import "BasicMethod.h"
 #import "Constants.h"
 #import "DelegateMessenger.h"
-
+#import "LolayHttpClientGlobals.h"
 
 @implementation BasicMethod
 
@@ -41,6 +41,7 @@
 		headers = [[NSMutableDictionary alloc] init];
 		timeoutInSeconds = 60; // DEFAULT
         cachePolicy = NSURLRequestUseProtocolCachePolicy; // Default cache policy
+		handleCookies = YES;
 		encodeParameterNames = YES;
 	}
 	
@@ -53,6 +54,11 @@
 
 - (void)setCachePolicy:(NSURLRequestCachePolicy) cachePolicyValue {
     cachePolicy = cachePolicyValue;
+}
+
+- (void) setHandleCookies:(BOOL)shouldHandleCookies
+{
+	handleCookies = shouldHandleCookies;
 }
 
 - (void) setEncodeParameterNames:(BOOL) encodeParameterNamesIn {
@@ -172,7 +178,7 @@
 	if (dataInBody || [body length] > 0) { 
 		if ([methodType isEqualToString:@"POST"]|| [methodType isEqualToString:@"PUT"]) {  //For post/put methods, we add the parameters to the body
 			[request setHTTPBody:body];
-		} else if ([methodType isEqualToString:@"GET"]) { //For get methods, we have to add parameters to the url
+		} else if ([methodType isEqualToString:@"GET"]|| [methodType isEqualToString:@"DELETE"] ) { //For get methods, we have to add parameters to the url
 			//Get a mutable string so that we can add the parameters to the end as query arguments
 			NSMutableString * newURLString = [[NSMutableString alloc] initWithString:[methodURL absoluteString]];
 			//Convert the body data into a string
@@ -195,6 +201,8 @@
     if(cachePolicy != NSURLRequestUseProtocolCachePolicy) {
         [request setCachePolicy:cachePolicy];
     }
+	
+	[request setHTTPShouldHandleCookies: handleCookies];
 	
 	[self prepareMethod:methodURL methodType:methodType dataInBody:dataInBody contentType:contentType withRequest:request];
 	

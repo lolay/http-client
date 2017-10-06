@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		324D0FA5191ED209007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA4191ED209007ABFD7 /* Foundation.framework */; };
+		324D0FB3191ED209007ABFD7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FB2191ED209007ABFD7 /* XCTest.framework */; };
+		324D0FB4191ED209007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA4191ED209007ABFD7 /* Foundation.framework */; };
+		324D0FB9191ED209007ABFD7 /* libLolayHttpClient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D0FA1191ED209007ABFD7 /* libLolayHttpClient.a */; };
+		324D0FBF191ED209007ABFD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324D0FBD191ED209007ABFD7 /* InfoPlist.strings */; };
+		324D0FC1191ED209007ABFD7 /* LolayHttpClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FC0191ED209007ABFD7 /* LolayHttpClientTests.m */; };
+		324D0FE2191ED25F007ABFD7 /* BasicMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FCB191ED25F007ABFD7 /* BasicMethod.m */; };
+		324D0FE3191ED25F007ABFD7 /* BasicMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FCB191ED25F007ABFD7 /* BasicMethod.m */; };
+		324D0FE4191ED25F007ABFD7 /* DataPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FCE191ED25F007ABFD7 /* DataPart.m */; };
+		324D0FE5191ED25F007ABFD7 /* DataPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FCE191ED25F007ABFD7 /* DataPart.m */; };
+		324D0FE6191ED25F007ABFD7 /* DelegateMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD0191ED25F007ABFD7 /* DelegateMessenger.m */; };
+		324D0FE7191ED25F007ABFD7 /* DelegateMessenger.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD0191ED25F007ABFD7 /* DelegateMessenger.m */; };
+		324D0FE8191ED25F007ABFD7 /* DeleteMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD2191ED25F007ABFD7 /* DeleteMethod.m */; };
+		324D0FE9191ED25F007ABFD7 /* DeleteMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD2191ED25F007ABFD7 /* DeleteMethod.m */; };
+		324D0FEA191ED25F007ABFD7 /* FileDataPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD4191ED25F007ABFD7 /* FileDataPart.m */; };
+		324D0FEB191ED25F007ABFD7 /* FileDataPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD4191ED25F007ABFD7 /* FileDataPart.m */; };
+		324D0FEC191ED25F007ABFD7 /* FilePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD6191ED25F007ABFD7 /* FilePart.m */; };
+		324D0FED191ED25F007ABFD7 /* FilePart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD6191ED25F007ABFD7 /* FilePart.m */; };
+		324D0FEE191ED25F007ABFD7 /* GetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD8191ED25F007ABFD7 /* GetMethod.m */; };
+		324D0FEF191ED25F007ABFD7 /* GetMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FD8191ED25F007ABFD7 /* GetMethod.m */; };
+		324D0FF0191ED25F007ABFD7 /* HeadMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FDA191ED25F007ABFD7 /* HeadMethod.m */; };
+		324D0FF1191ED25F007ABFD7 /* HeadMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FDA191ED25F007ABFD7 /* HeadMethod.m */; };
+		324D0FF2191ED25F007ABFD7 /* HttpClientGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FDE191ED25F007ABFD7 /* HttpClientGzipUtility.m */; };
+		324D0FF3191ED25F007ABFD7 /* HttpClientGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FDE191ED25F007ABFD7 /* HttpClientGzipUtility.m */; };
+		324D0FF4191ED25F007ABFD7 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FE1191ED25F007ABFD7 /* HttpResponse.m */; };
+		324D0FF5191ED25F007ABFD7 /* HttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FE1191ED25F007ABFD7 /* HttpResponse.m */; };
+		324D1001191ED26D007ABFD7 /* MultipartMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FF7191ED26D007ABFD7 /* MultipartMethod.m */; };
+		324D1002191ED26D007ABFD7 /* MultipartMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FF7191ED26D007ABFD7 /* MultipartMethod.m */; };
+		324D1003191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FF9191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m */; };
+		324D1004191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FF9191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m */; };
+		324D1005191ED26D007ABFD7 /* PostMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FFC191ED26D007ABFD7 /* PostMethod.m */; };
+		324D1006191ED26D007ABFD7 /* PostMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FFC191ED26D007ABFD7 /* PostMethod.m */; };
+		324D1007191ED26D007ABFD7 /* PutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FFE191ED26D007ABFD7 /* PutMethod.m */; };
+		324D1008191ED26D007ABFD7 /* PutMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D0FFE191ED26D007ABFD7 /* PutMethod.m */; };
+		324D1009191ED26D007ABFD7 /* StringPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1000191ED26D007ABFD7 /* StringPart.m */; };
+		324D100A191ED26D007ABFD7 /* StringPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1000191ED26D007ABFD7 /* StringPart.m */; };
+		324D100C191ED2F3007ABFD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D100B191ED2F3007ABFD7 /* libz.dylib */; };
+		324D100D191ED2F3007ABFD7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D100B191ED2F3007ABFD7 /* libz.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		324D0FB7191ED209007ABFD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 324D0F99191ED209007ABFD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 324D0FA0191ED209007ABFD7;
+			remoteInfo = LolayHttpClient;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		324D0F9F191ED209007ABFD7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		324D0FA1191ED209007ABFD7 /* libLolayHttpClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLolayHttpClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		324D0FA4191ED209007ABFD7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		324D0FA8191ED209007ABFD7 /* LolayHttpClient-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LolayHttpClient-Prefix.pch"; sourceTree = "<group>"; };
+		324D0FB1191ED209007ABFD7 /* LolayHttpClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LolayHttpClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		324D0FB2191ED209007ABFD7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		324D0FBC191ED209007ABFD7 /* LolayHttpClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LolayHttpClientTests-Info.plist"; sourceTree = "<group>"; };
+		324D0FBE191ED209007ABFD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		324D0FC0191ED209007ABFD7 /* LolayHttpClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LolayHttpClientTests.m; sourceTree = "<group>"; };
+		324D0FCA191ED25F007ABFD7 /* BasicMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FCB191ED25F007ABFD7 /* BasicMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FCC191ED25F007ABFD7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = SOURCE_ROOT; };
+		324D0FCD191ED25F007ABFD7 /* DataPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataPart.h; sourceTree = SOURCE_ROOT; };
+		324D0FCE191ED25F007ABFD7 /* DataPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataPart.m; sourceTree = SOURCE_ROOT; };
+		324D0FCF191ED25F007ABFD7 /* DelegateMessenger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateMessenger.h; sourceTree = SOURCE_ROOT; };
+		324D0FD0191ED25F007ABFD7 /* DelegateMessenger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateMessenger.m; sourceTree = SOURCE_ROOT; };
+		324D0FD1191ED25F007ABFD7 /* DeleteMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FD2191ED25F007ABFD7 /* DeleteMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FD3191ED25F007ABFD7 /* FileDataPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileDataPart.h; sourceTree = SOURCE_ROOT; };
+		324D0FD4191ED25F007ABFD7 /* FileDataPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileDataPart.m; sourceTree = SOURCE_ROOT; };
+		324D0FD5191ED25F007ABFD7 /* FilePart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilePart.h; sourceTree = SOURCE_ROOT; };
+		324D0FD6191ED25F007ABFD7 /* FilePart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilePart.m; sourceTree = SOURCE_ROOT; };
+		324D0FD7191ED25F007ABFD7 /* GetMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FD8191ED25F007ABFD7 /* GetMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FD9191ED25F007ABFD7 /* HeadMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FDA191ED25F007ABFD7 /* HeadMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FDB191ED25F007ABFD7 /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = SOURCE_ROOT; };
+		324D0FDC191ED25F007ABFD7 /* HttpClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientDelegate.h; sourceTree = SOURCE_ROOT; };
+		324D0FDD191ED25F007ABFD7 /* HttpClientGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClientGzipUtility.h; sourceTree = SOURCE_ROOT; };
+		324D0FDE191ED25F007ABFD7 /* HttpClientGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClientGzipUtility.m; sourceTree = SOURCE_ROOT; };
+		324D0FDF191ED25F007ABFD7 /* HttpMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FE0191ED25F007ABFD7 /* HttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpResponse.h; sourceTree = SOURCE_ROOT; };
+		324D0FE1191ED25F007ABFD7 /* HttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpResponse.m; sourceTree = SOURCE_ROOT; };
+		324D0FF6191ED26D007ABFD7 /* MultipartMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultipartMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FF7191ED26D007ABFD7 /* MultipartMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultipartMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FF8191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+AllowsAnyHTTPSCertificate.h"; sourceTree = SOURCE_ROOT; };
+		324D0FF9191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+AllowsAnyHTTPSCertificate.m"; sourceTree = SOURCE_ROOT; };
+		324D0FFA191ED26D007ABFD7 /* Part.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Part.h; sourceTree = SOURCE_ROOT; };
+		324D0FFB191ED26D007ABFD7 /* PostMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FFC191ED26D007ABFD7 /* PostMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FFD191ED26D007ABFD7 /* PutMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PutMethod.h; sourceTree = SOURCE_ROOT; };
+		324D0FFE191ED26D007ABFD7 /* PutMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PutMethod.m; sourceTree = SOURCE_ROOT; };
+		324D0FFF191ED26D007ABFD7 /* StringPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringPart.h; sourceTree = SOURCE_ROOT; };
+		324D1000191ED26D007ABFD7 /* StringPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringPart.m; sourceTree = SOURCE_ROOT; };
+		324D100B191ED2F3007ABFD7 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		324D100E191ED38D007ABFD7 /* LolayHttpClientGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LolayHttpClientGlobals.h; sourceTree = SOURCE_ROOT; };
+		324D100F191EDEE2007ABFD7 /* LolayHttpClient.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LolayHttpClient.podspec; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		324D0F9E191ED209007ABFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D0FA5191ED209007ABFD7 /* Foundation.framework in Frameworks */,
+				324D100C191ED2F3007ABFD7 /* libz.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324D0FAE191ED209007ABFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D0FB3191ED209007ABFD7 /* XCTest.framework in Frameworks */,
+				324D100D191ED2F3007ABFD7 /* libz.dylib in Frameworks */,
+				324D0FB9191ED209007ABFD7 /* libLolayHttpClient.a in Frameworks */,
+				324D0FB4191ED209007ABFD7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		324D0F98191ED209007ABFD7 = {
+			isa = PBXGroup;
+			children = (
+				324D0FA6191ED209007ABFD7 /* LolayHttpClient */,
+				324D0FBA191ED209007ABFD7 /* LolayHttpClientTests */,
+				324D0FA3191ED209007ABFD7 /* Frameworks */,
+				324D0FA2191ED209007ABFD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		324D0FA2191ED209007ABFD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				324D0FA1191ED209007ABFD7 /* libLolayHttpClient.a */,
+				324D0FB1191ED209007ABFD7 /* LolayHttpClientTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		324D0FA3191ED209007ABFD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				324D100B191ED2F3007ABFD7 /* libz.dylib */,
+				324D0FA4191ED209007ABFD7 /* Foundation.framework */,
+				324D0FB2191ED209007ABFD7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		324D0FA6191ED209007ABFD7 /* LolayHttpClient */ = {
+			isa = PBXGroup;
+			children = (
+				324D100E191ED38D007ABFD7 /* LolayHttpClientGlobals.h */,
+				324D0FDB191ED25F007ABFD7 /* HttpClient.h */,
+				324D0FCA191ED25F007ABFD7 /* BasicMethod.h */,
+				324D0FCB191ED25F007ABFD7 /* BasicMethod.m */,
+				324D0FCC191ED25F007ABFD7 /* Constants.h */,
+				324D0FCD191ED25F007ABFD7 /* DataPart.h */,
+				324D0FCE191ED25F007ABFD7 /* DataPart.m */,
+				324D0FCF191ED25F007ABFD7 /* DelegateMessenger.h */,
+				324D0FD0191ED25F007ABFD7 /* DelegateMessenger.m */,
+				324D0FD1191ED25F007ABFD7 /* DeleteMethod.h */,
+				324D0FD2191ED25F007ABFD7 /* DeleteMethod.m */,
+				324D0FD3191ED25F007ABFD7 /* FileDataPart.h */,
+				324D0FD4191ED25F007ABFD7 /* FileDataPart.m */,
+				324D0FD5191ED25F007ABFD7 /* FilePart.h */,
+				324D0FD6191ED25F007ABFD7 /* FilePart.m */,
+				324D0FD7191ED25F007ABFD7 /* GetMethod.h */,
+				324D0FD8191ED25F007ABFD7 /* GetMethod.m */,
+				324D0FD9191ED25F007ABFD7 /* HeadMethod.h */,
+				324D0FDA191ED25F007ABFD7 /* HeadMethod.m */,
+				324D0FDC191ED25F007ABFD7 /* HttpClientDelegate.h */,
+				324D0FDD191ED25F007ABFD7 /* HttpClientGzipUtility.h */,
+				324D0FDE191ED25F007ABFD7 /* HttpClientGzipUtility.m */,
+				324D0FDF191ED25F007ABFD7 /* HttpMethod.h */,
+				324D0FE0191ED25F007ABFD7 /* HttpResponse.h */,
+				324D0FE1191ED25F007ABFD7 /* HttpResponse.m */,
+				324D0FF6191ED26D007ABFD7 /* MultipartMethod.h */,
+				324D0FF7191ED26D007ABFD7 /* MultipartMethod.m */,
+				324D0FF8191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.h */,
+				324D0FF9191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m */,
+				324D0FFA191ED26D007ABFD7 /* Part.h */,
+				324D0FFB191ED26D007ABFD7 /* PostMethod.h */,
+				324D0FFC191ED26D007ABFD7 /* PostMethod.m */,
+				324D0FFD191ED26D007ABFD7 /* PutMethod.h */,
+				324D0FFE191ED26D007ABFD7 /* PutMethod.m */,
+				324D0FFF191ED26D007ABFD7 /* StringPart.h */,
+				324D1000191ED26D007ABFD7 /* StringPart.m */,
+				324D100F191EDEE2007ABFD7 /* LolayHttpClient.podspec */,
+				324D0FA7191ED209007ABFD7 /* Supporting Files */,
+			);
+			path = LolayHttpClient;
+			sourceTree = "<group>";
+		};
+		324D0FA7191ED209007ABFD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				324D0FA8191ED209007ABFD7 /* LolayHttpClient-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		324D0FBA191ED209007ABFD7 /* LolayHttpClientTests */ = {
+			isa = PBXGroup;
+			children = (
+				324D0FC0191ED209007ABFD7 /* LolayHttpClientTests.m */,
+				324D0FBB191ED209007ABFD7 /* Supporting Files */,
+			);
+			path = LolayHttpClientTests;
+			sourceTree = "<group>";
+		};
+		324D0FBB191ED209007ABFD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				324D0FBC191ED209007ABFD7 /* LolayHttpClientTests-Info.plist */,
+				324D0FBD191ED209007ABFD7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		324D0FA0191ED209007ABFD7 /* LolayHttpClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324D0FC4191ED209007ABFD7 /* Build configuration list for PBXNativeTarget "LolayHttpClient" */;
+			buildPhases = (
+				324D0F9D191ED209007ABFD7 /* Sources */,
+				324D0F9E191ED209007ABFD7 /* Frameworks */,
+				324D0F9F191ED209007ABFD7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LolayHttpClient;
+			productName = LolayHttpClient;
+			productReference = 324D0FA1191ED209007ABFD7 /* libLolayHttpClient.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		324D0FB0191ED209007ABFD7 /* LolayHttpClientTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324D0FC7191ED209007ABFD7 /* Build configuration list for PBXNativeTarget "LolayHttpClientTests" */;
+			buildPhases = (
+				324D0FAD191ED209007ABFD7 /* Sources */,
+				324D0FAE191ED209007ABFD7 /* Frameworks */,
+				324D0FAF191ED209007ABFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				324D0FB8191ED209007ABFD7 /* PBXTargetDependency */,
+			);
+			name = LolayHttpClientTests;
+			productName = LolayHttpClientTests;
+			productReference = 324D0FB1191ED209007ABFD7 /* LolayHttpClientTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		324D0F99191ED209007ABFD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Lolay;
+			};
+			buildConfigurationList = 324D0F9C191ED209007ABFD7 /* Build configuration list for PBXProject "LolayHttpClient" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 324D0F98191ED209007ABFD7;
+			productRefGroup = 324D0FA2191ED209007ABFD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				324D0FA0191ED209007ABFD7 /* LolayHttpClient */,
+				324D0FB0191ED209007ABFD7 /* LolayHttpClientTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		324D0FAF191ED209007ABFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D0FBF191ED209007ABFD7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		324D0F9D191ED209007ABFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D0FEE191ED25F007ABFD7 /* GetMethod.m in Sources */,
+				324D0FEC191ED25F007ABFD7 /* FilePart.m in Sources */,
+				324D1001191ED26D007ABFD7 /* MultipartMethod.m in Sources */,
+				324D0FF4191ED25F007ABFD7 /* HttpResponse.m in Sources */,
+				324D0FF0191ED25F007ABFD7 /* HeadMethod.m in Sources */,
+				324D0FE6191ED25F007ABFD7 /* DelegateMessenger.m in Sources */,
+				324D0FE8191ED25F007ABFD7 /* DeleteMethod.m in Sources */,
+				324D1009191ED26D007ABFD7 /* StringPart.m in Sources */,
+				324D1003191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m in Sources */,
+				324D0FF2191ED25F007ABFD7 /* HttpClientGzipUtility.m in Sources */,
+				324D0FE4191ED25F007ABFD7 /* DataPart.m in Sources */,
+				324D1005191ED26D007ABFD7 /* PostMethod.m in Sources */,
+				324D0FE2191ED25F007ABFD7 /* BasicMethod.m in Sources */,
+				324D1007191ED26D007ABFD7 /* PutMethod.m in Sources */,
+				324D0FEA191ED25F007ABFD7 /* FileDataPart.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324D0FAD191ED209007ABFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D0FE5191ED25F007ABFD7 /* DataPart.m in Sources */,
+				324D1008191ED26D007ABFD7 /* PutMethod.m in Sources */,
+				324D0FF3191ED25F007ABFD7 /* HttpClientGzipUtility.m in Sources */,
+				324D0FC1191ED209007ABFD7 /* LolayHttpClientTests.m in Sources */,
+				324D0FE7191ED25F007ABFD7 /* DelegateMessenger.m in Sources */,
+				324D100A191ED26D007ABFD7 /* StringPart.m in Sources */,
+				324D0FE3191ED25F007ABFD7 /* BasicMethod.m in Sources */,
+				324D1004191ED26D007ABFD7 /* NSURLRequest+AllowsAnyHTTPSCertificate.m in Sources */,
+				324D0FED191ED25F007ABFD7 /* FilePart.m in Sources */,
+				324D0FEB191ED25F007ABFD7 /* FileDataPart.m in Sources */,
+				324D1006191ED26D007ABFD7 /* PostMethod.m in Sources */,
+				324D1002191ED26D007ABFD7 /* MultipartMethod.m in Sources */,
+				324D0FE9191ED25F007ABFD7 /* DeleteMethod.m in Sources */,
+				324D0FF5191ED25F007ABFD7 /* HttpResponse.m in Sources */,
+				324D0FF1191ED25F007ABFD7 /* HeadMethod.m in Sources */,
+				324D0FEF191ED25F007ABFD7 /* GetMethod.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		324D0FB8191ED209007ABFD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 324D0FA0191ED209007ABFD7 /* LolayHttpClient */;
+			targetProxy = 324D0FB7191ED209007ABFD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		324D0FBD191ED209007ABFD7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				324D0FBE191ED209007ABFD7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		324D0FC2191ED209007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		324D0FC3191ED209007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		324D0FC5191ED209007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LolayHttpClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayHttpClient/LolayHttpClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		324D0FC6191ED209007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LolayHttpClient.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayHttpClient/LolayHttpClient-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		324D0FC8191ED209007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayHttpClient/LolayHttpClient-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LolayHttpClientTests/LolayHttpClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		324D0FC9191ED209007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayHttpClient/LolayHttpClient-Prefix.pch";
+				INFOPLIST_FILE = "LolayHttpClientTests/LolayHttpClientTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		324D0F9C191ED209007ABFD7 /* Build configuration list for PBXProject "LolayHttpClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D0FC2191ED209007ABFD7 /* Debug */,
+				324D0FC3191ED209007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		324D0FC4191ED209007ABFD7 /* Build configuration list for PBXNativeTarget "LolayHttpClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D0FC5191ED209007ABFD7 /* Debug */,
+				324D0FC6191ED209007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		324D0FC7191ED209007ABFD7 /* Build configuration list for PBXNativeTarget "LolayHttpClientTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D0FC8191ED209007ABFD7 /* Debug */,
+				324D0FC9191ED209007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 324D0F99191ED209007ABFD7 /* Project object */;
+}
